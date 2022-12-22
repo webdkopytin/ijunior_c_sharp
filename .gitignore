@@ -2,18 +2,6 @@
 # Данный GITIGNORE-файл был автоматически создан Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs
-/001_basics_of_programming/ConsoleApp3/.vs/ConsoleApp3
-/001_basics_of_programming/ConsoleApp4/.vs/ConsoleApp4
-/001_basics_of_programming/ConsoleApp5/.vs/ConsoleApp5
-/001_basics_of_programming/ConsoleApp6/.vs/ConsoleApp6
-/001_basics_of_programming/ConsoleApp7/.vs/ConsoleApp7
-/001_basics_of_programming/ConsoleApp8/.vs/ConsoleApp8
-/003_arrays/ArrayApp2/.vs/ArrayApp2
-/003_arrays/ArrayApp4/.vs/ArrayApp4
-/003_arrays/Arrays1/.vs/Arrays1
-/003_arrays/ArraysApp3/.vs/ArraysApp3
-/003_arrays/ArraysApp3/ArraysApp3/obj/Debug
-/003_arrays/Arrays1/Arrays1/obj/Debug
-/003_arrays/ArrayApp4/ArrayApp4/obj/Debug
-/003_arrays/ArrayApp2/ArrayApp2/obj/Debug
+**/.vs
+**/obj/
+**/bin/
