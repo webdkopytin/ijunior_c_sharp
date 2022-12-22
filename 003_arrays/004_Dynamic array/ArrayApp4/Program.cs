@@ -13,7 +13,6 @@ namespace ArrayApp4
 
             while (isOpen)
             {
-
                 Console.Clear();
                 Console.SetCursorPosition(0, 20);
                 Console.Write("Запомненные числа: ");
