@@ -6,10 +6,29 @@ namespace _008_ShiftingArrayValues
     {
         static void Main(string[] args)
         {
-            // Дан массив чисел.Нужно его сдвинуть циклически на указанное пользователем значение позиций влево,
-            // не используя других массивов.Пример для сдвига один раз: { 1, 2, 3, 4} => { 2, 3, 4, 1}
+            int tempNumber;
+            int countShift = 2;
 
+            int[] array = new int[] { 1, 2, 3, 4, 5, 6 };
 
+            for (int i = 0; i < array.Length; i++)
+            {
+                tempNumber = array[i];
+
+                if (i < array.Length - countShift)
+                {
+                    array[i] = array[i + countShift];
+                    array[i + countShift] = tempNumber;
+                }
+                else
+                {
+                    array[i] = tempNumber;
+                }
+
+                Console.Write(array[i] + " ");
+            }
+
+            Console.ReadKey();
         }
     }
 }
