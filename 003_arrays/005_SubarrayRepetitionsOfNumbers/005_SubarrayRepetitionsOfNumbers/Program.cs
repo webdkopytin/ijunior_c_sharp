@@ -6,7 +6,39 @@ namespace _005_SubarrayRepetitionsOfNumbers
     {
         static void Main(string[] args)
         {
+            int[] array = new int[30];
 
+            int counter = 1;
+            int numberReply = 0;
+            int repeatNumber = 0;
+            int minRandom = 1;
+            int maxRandom = 31;
+
+            Random random = new Random();
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = random.Next(minRandom, maxRandom);
+
+                Console.Write(array[i] + " ");
+            }
+
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i] == array[i - 1])
+                {
+                    ++counter;
+                }
+                else if (numberReply < counter)
+                {
+                    numberReply = counter;
+                    repeatNumber = array[i - 1];
+                    counter = 1;
+                }
+            }
+
+            Console.WriteLine($"\nЧисло {repeatNumber} повторяется {numberReply} раз подряд");
+            Console.ReadKey();
         }
     }
 }
