@@ -6,9 +6,16 @@ namespace _007_Split
     {
         static void Main(string[] args)
         {
-            // Дана строка с текстом, используя метод строки String.Split() получить массив слов,
-            // которые разделены пробелом в тексте и вывести массив, каждое слово с новой строки.
+            string phrase = "Unity Junior Developer";
 
+            string[] arrayWord = phrase.Split(' ');
+
+            for (int i = 0; i < arrayWord.Length; i++)
+            {
+                Console.WriteLine(arrayWord[i]);
+            }
+
+            Console.ReadKey();
         }
     }
 }
