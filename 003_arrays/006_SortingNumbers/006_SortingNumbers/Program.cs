@@ -51,9 +51,9 @@ namespace _006_SortingNumbers
                     countSwap = 0;
             }
 
-            foreach (int i in array)
+            foreach (int number in array)
             {
-                Console.Write(i + " ");
+                Console.Write(number + " ");
             }
 
             Console.ReadKey();
