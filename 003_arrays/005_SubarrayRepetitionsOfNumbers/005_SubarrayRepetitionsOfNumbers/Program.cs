@@ -6,13 +6,14 @@ namespace _005_SubarrayRepetitionsOfNumbers
     {
         static void Main(string[] args)
         {
-            int[] array = new int[30];
-
+            int sizeSpecifiedArray = 30;
             int counter = 1;
             int numberReply = 0;
             int repeatNumber = 0;
             int minRandom = 1;
             int maxRandom = 31;
+
+            int[] array = new int[sizeSpecifiedArray];
 
             Random random = new Random();
 
