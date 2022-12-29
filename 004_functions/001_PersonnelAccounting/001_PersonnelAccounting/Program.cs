@@ -6,15 +6,68 @@ namespace _001_PersonnelAccounting
     {
         static void Main(string[] args)
         {
-            //Будет 2 массива: 1) фио 2) должность.
-            //Описать функцию заполнения массивов досье, функцию форматированного вывода, функцию поиска по фамилии и функцию удаления досье.
-            //Функция расширяет уже имеющийся массив на 1 и дописывает туда новое значение.
-            //Программа должна быть с меню, которое содержит пункты:
-            //1) добавить досье
-            //2) вывести все досье(в одну строку через “-” фио и должность с порядковым номером в начале)
-            //3) удалить досье(Массивы уменьшаются на один элемент.Нужны дополнительные проверки, чтобы не возникало ошибок)
-            //4) поиск по фамилии
-            //5) выход
+            int CommandAdd = 1;
+            int CommandViewAllRecords = 2;
+            int CommandDelete = 3;
+            int CommandFind = 4;
+            int CommandExit = 5;
+
+            int currentCommand;
+
+            bool isExit = false;
+
+            string[] arrayFIO;
+            string[] arrayCurrentPosition;
+
+            while (isExit == false)
+            {
+                ViewMenu(ref CommandAdd, ref CommandViewAllRecords, ref CommandDelete, ref CommandFind, ref CommandExit);
+
+                Console.Write("Введите команду: ");
+                currentCommand = Convert.ToInt32(Console.ReadLine());
+
+                if (currentCommand == CommandAdd)
+                    AddRecord();
+                else if (currentCommand == CommandViewAllRecords)
+                    ViewAllRecord();
+                else if (currentCommand == CommandDelete)
+                    DeleteRecord();
+                else if (currentCommand == CommandFind)
+                    FindRecordForLastname();
+                else if (currentCommand == CommandExit)
+                    Exit(ref isExit);
+            }
+        }
+        static void ViewMenu(ref int CommandAdd, ref int CommandViewAllRecords, ref int CommandDelete, ref int CommandFind, ref int CommandExit)
+        {
+            Console.WriteLine(
+                    "Управление каталогом досье (команды):\n" +
+                    $"{CommandAdd}) Добавить досье\n" +
+                    $"{CommandViewAllRecords}) Вывести все досье\n" +
+                    $"{CommandDelete}) Удалить досье\n" +
+                    $"{CommandFind}) Поиск по фамилии\n" +
+                    $"{CommandExit}) Выход\n"
+                );
+        }
+        static void AddRecord()
+        {
+            // TODO: добавить досье
+        }
+        static void ViewAllRecord()
+        {
+            // TODO: вывести все досье(в одну строку через “-” фио и должность с порядковым номером в начале)
+        }
+        static void DeleteRecord()
+        {
+            // TODO: удалить досье(Массивы уменьшаются на один элемент.Нужны дополнительные проверки, чтобы не возникало ошибок)
+        }
+        static void FindRecordForLastname()
+        {
+            // TODO: поиск по фамилии
+        }
+        static bool Exit(ref bool isExit)
+        {
+            return isExit = true;
         }
     }
 }
