@@ -11,26 +11,44 @@ namespace _006_SortingNumbers
             int secondTempNumber;
             int firstRandomNumber = 1;
             int lastRandomNumber = 10;
+            int countSwap = 0;
+
+            bool isOpenSwap = true;
 
             int[] array = new int[lengthArray];
 
             Random random = new Random();
 
+            Console.Write("Исходный массив: ");
+
             for (int i = 0; i < array.Length; i++)
             {
                 array[i] = random.Next(firstRandomNumber, lastRandomNumber);
+
+                Console.Write(array[i] + " ");
             }
 
-            for (int i = 1; i < array.Length; i++)
-            {
-                firstTempNumber = array[i - 1];
+            Console.Write("\nОтсортированный массив: ");
 
-                if (firstTempNumber > array[i])
+            while (isOpenSwap)
+            {
+                for (int i = 0; i < array.Length - 1; i++)
                 {
-                    secondTempNumber = firstTempNumber;
                     firstTempNumber = array[i];
-                    array[i] = secondTempNumber;
+                    secondTempNumber = array[i + 1];
+
+                    if (firstTempNumber > secondTempNumber)
+                    {
+                        array[i] = secondTempNumber;
+                        array[i + 1] = firstTempNumber;
+                        countSwap++;
+                    }
                 }
+
+                if (countSwap == 0)
+                    isOpenSwap = false;
+                else
+                    countSwap = 0;
             }
 
             foreach (int i in array)
