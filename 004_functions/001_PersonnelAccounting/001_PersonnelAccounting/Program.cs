@@ -83,7 +83,7 @@ namespace _001_PersonnelAccounting
 
             for (int i = 0; i < arrayFIO.Length; i++)
             {
-                Console.WriteLine($"| {countRecord} | {arrayFIO[i]} | {arrayCurrentPosition[i]} |");
+                Console.WriteLine($"| {countRecord} | {arrayFIO[i]} - {arrayCurrentPosition[i]}");
                 countRecord++;
             }
 
