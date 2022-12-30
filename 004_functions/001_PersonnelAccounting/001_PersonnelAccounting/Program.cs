@@ -16,8 +16,8 @@ namespace _001_PersonnelAccounting
 
             bool isExit = false;
 
-            string[] arrayFIO;
-            string[] arrayCurrentPosition;
+            string[] arrayFIO = new string[0];
+            string[] arrayCurrentPosition = new string[0];
 
             while (isExit == false)
             {
@@ -27,9 +27,9 @@ namespace _001_PersonnelAccounting
                 currentCommand = Convert.ToInt32(Console.ReadLine());
 
                 if (currentCommand == CommandAdd)
-                    AddRecord();
+                    AddRecord(ref arrayFIO, ref arrayCurrentPosition);
                 else if (currentCommand == CommandViewAllRecords)
-                    ViewAllRecord();
+                    ViewAllRecord(ref arrayFIO, ref arrayCurrentPosition);
                 else if (currentCommand == CommandDelete)
                     DeleteRecord();
                 else if (currentCommand == CommandFind)
@@ -49,13 +49,47 @@ namespace _001_PersonnelAccounting
                     $"{CommandExit}) Выход\n"
                 );
         }
-        static void AddRecord()
+        static void AddRecord(ref string[] arrayFIO, ref string[] arrayCurrentPosition)
         {
-            // TODO: добавить досье
+            string[] tempArrayFIO = new string[arrayFIO.Length + 1];
+            string[] tempArrayCurrentPosition = new string[arrayCurrentPosition.Length + 1];
+
+            for (int i = 0; i < arrayFIO.Length; i++)
+            {
+                tempArrayFIO[i] = arrayFIO[i];
+                tempArrayCurrentPosition[i] = arrayCurrentPosition[i];
+
+                Console.WriteLine(tempArrayFIO[i]);
+            }
+
+            Console.Write("\nВведите ФИО: ");
+            string FIO = Console.ReadLine();
+
+            Console.Write("Введите должность: ");
+            string currentPosition = Console.ReadLine();
+
+            tempArrayFIO[arrayFIO.Length] = FIO;
+            arrayFIO = tempArrayFIO;
+
+            tempArrayCurrentPosition[arrayCurrentPosition.Length] = currentPosition;
+            arrayCurrentPosition = tempArrayCurrentPosition;
+
+            Console.WriteLine("Запись добавлена!");
+            Console.WriteLine();
         }
-        static void ViewAllRecord()
+        static void ViewAllRecord(ref string[] arrayFIO, ref string[] arrayCurrentPosition)
         {
-            // TODO: вывести все досье(в одну строку через “-” фио и должность с порядковым номером в начале)
+            int countRecord = 1;
+
+            Console.WriteLine("\nЗаписи в базе данных\n");
+
+            for (int i = 0; i < arrayFIO.Length; i++)
+            {
+                Console.WriteLine($"{countRecord}) {arrayFIO[i]} - {arrayCurrentPosition[i]}");
+                countRecord++;
+            }
+
+            Console.WriteLine();
         }
         static void DeleteRecord()
         {
