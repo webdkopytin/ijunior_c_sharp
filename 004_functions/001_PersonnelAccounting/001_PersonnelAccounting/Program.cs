@@ -31,7 +31,7 @@ namespace _001_PersonnelAccounting
                 else if (currentCommand == CommandViewAllRecords)
                     ViewAllRecord(ref arrayFIO, ref arrayCurrentPosition);
                 else if (currentCommand == CommandDelete)
-                    DeleteRecord();
+                    DeleteRecord(ref arrayFIO, ref arrayCurrentPosition);
                 else if (currentCommand == CommandFind)
                     FindRecordForLastname();
                 else if (currentCommand == CommandExit)
@@ -72,8 +72,7 @@ namespace _001_PersonnelAccounting
             tempArrayCurrentPosition[arrayCurrentPosition.Length] = currentPosition;
             arrayCurrentPosition = tempArrayCurrentPosition;
 
-            Console.WriteLine("Запись добавлена!");
-            Console.WriteLine();
+            Console.WriteLine("Запись добавлена!\n");
         }
         static void ViewAllRecord(ref string[] arrayFIO, ref string[] arrayCurrentPosition)
         {
@@ -84,14 +83,54 @@ namespace _001_PersonnelAccounting
             for (int i = 0; i < arrayFIO.Length; i++)
             {
                 Console.WriteLine($"| {countRecord} | {arrayFIO[i]} - {arrayCurrentPosition[i]}");
+
                 countRecord++;
             }
 
             Console.WriteLine();
         }
-        static void DeleteRecord()
+        static void DeleteRecord(ref string[] arrayFIO, ref string[] arrayCurrentPosition)
         {
-            // TODO: удалить досье(Массивы уменьшаются на один элемент.Нужны дополнительные проверки, чтобы не возникало ошибок)
+            int numberForDelRecord;
+            int countRecord = 0;
+
+            string[] tempArrayFIOBeforeDelRecord;
+            string[] tempArrayCPBeforeDelRecord;
+
+            Console.Write("\nВведите номер записи для удаления из досье: ");
+            numberForDelRecord = Convert.ToInt32(Console.ReadLine());
+
+            if (numberForDelRecord > arrayFIO.Length || numberForDelRecord < 1)
+            {
+                Console.WriteLine("Такой записи нет!\n");
+            }
+            else if (numberForDelRecord == 1 && arrayFIO.Length == 1)
+            {
+                arrayFIO = new string[0];
+                arrayCurrentPosition = new string[0];
+            }
+            else if (numberForDelRecord >= 1 && arrayFIO.Length >= 1)
+            {
+                tempArrayFIOBeforeDelRecord = new string[arrayFIO.Length - 1];
+                tempArrayCPBeforeDelRecord = new string[arrayCurrentPosition.Length - 1];
+
+                for (int i = 0; i < arrayFIO.Length; i++)
+                {
+                    if (numberForDelRecord == i + 1)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        tempArrayFIOBeforeDelRecord[countRecord] = arrayFIO[i];
+                        tempArrayCPBeforeDelRecord[countRecord] = arrayCurrentPosition[i];
+                        countRecord++;
+                    }
+                }
+
+                arrayFIO = tempArrayFIOBeforeDelRecord;
+                arrayCurrentPosition = tempArrayCPBeforeDelRecord;
+            }
         }
         static void FindRecordForLastname()
         {
