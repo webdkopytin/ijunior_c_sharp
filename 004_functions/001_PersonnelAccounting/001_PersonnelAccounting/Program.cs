@@ -77,17 +77,18 @@ namespace _001_PersonnelAccounting
         static void ViewAllRecord(ref string[] arrayFIO, ref string[] arrayCurrentPosition)
         {
             int countRecord = 1;
+            int startIndex;
 
             Console.WriteLine("\nЗаписи в базе данных\n");
 
-            for (int i = 0; i < arrayFIO.Length; i++)
+            for (startIndex = 0; startIndex < arrayFIO.Length; startIndex++)
             {
-                Console.WriteLine($"| {countRecord} | {arrayFIO[i]} - {arrayCurrentPosition[i]}");
+                Console.WriteLine($"| {countRecord} | {arrayFIO[startIndex]} - {arrayCurrentPosition[startIndex]}");
 
                 countRecord++;
             }
 
-            Console.WriteLine();
+            Console.WriteLine(startIndex == 0 ? "Записи в базе досье отсутствуют!\n" : $"\n...записей в базе: {startIndex}\n");
         }
         static void DeleteRecord(ref string[] arrayFIO, ref string[] arrayCurrentPosition)
         {
