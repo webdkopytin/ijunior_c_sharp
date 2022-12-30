@@ -58,8 +58,6 @@ namespace _001_PersonnelAccounting
             {
                 tempArrayFIO[i] = arrayFIO[i];
                 tempArrayCurrentPosition[i] = arrayCurrentPosition[i];
-
-                Console.WriteLine(tempArrayFIO[i]);
             }
 
             Console.Write("\nВведите ФИО: ");
@@ -85,7 +83,7 @@ namespace _001_PersonnelAccounting
 
             for (int i = 0; i < arrayFIO.Length; i++)
             {
-                Console.WriteLine($"{countRecord}) {arrayFIO[i]} - {arrayCurrentPosition[i]}");
+                Console.WriteLine($"| {countRecord} | {arrayFIO[i]} | {arrayCurrentPosition[i]} |");
                 countRecord++;
             }
 
