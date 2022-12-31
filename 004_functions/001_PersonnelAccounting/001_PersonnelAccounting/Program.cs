@@ -33,7 +33,7 @@ namespace _001_PersonnelAccounting
                 else if (currentCommand == CommandDelete)
                     DeleteRecord(ref arrayFIO, ref arrayCurrentPosition);
                 else if (currentCommand == CommandFind)
-                    FindRecordForLastname();
+                    FindRecordForLastname(ref arrayFIO, ref arrayCurrentPosition);
                 else if (currentCommand == CommandExit)
                     Exit(ref isExit);
             }
@@ -133,9 +133,48 @@ namespace _001_PersonnelAccounting
                 arrayCurrentPosition = tempArrayCPBeforeDelRecord;
             }
         }
-        static void FindRecordForLastname()
+        static void FindRecordForLastname(ref string[] arrayFIO, ref string[] arrayCurrentPosition)
         {
-            // TODO: поиск по фамилии
+            string findString;
+
+            string[] tempArrayFIO;
+            string[] findSuccessArrayFIO = new string[arrayFIO.Length];
+
+            int countIndex = 0;
+
+            Console.Write("Введите фамилию, которую необходимо найти в базе: ");
+            findString = Console.ReadLine();
+
+            for (int i = 0; i < arrayFIO.Length; i++)
+            {
+                tempArrayFIO = arrayFIO[i].Split(' ');
+
+                if (findString == tempArrayFIO[0])
+                {
+                    findSuccessArrayFIO[countIndex] = arrayFIO[i];
+
+                    countIndex++;
+                }
+            }
+
+            Console.WriteLine("\nНайдены следующие записи:\n");
+
+            countIndex = 0;
+
+            for (int i = 0; i < findSuccessArrayFIO.Length; i++)
+            {
+                if (findSuccessArrayFIO[i] == null)
+                {
+                    continue;
+                }
+                else
+                {
+                    Console.WriteLine(findSuccessArrayFIO[i]);
+                    countIndex++;
+                }
+            }
+
+            Console.WriteLine();
         }
         static bool Exit(ref bool isExit)
         {
