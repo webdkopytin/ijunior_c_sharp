@@ -174,7 +174,10 @@ namespace _001_PersonnelAccounting
                 }
             }
 
-            Console.WriteLine();
+            if (countIndex == 0)
+                Console.WriteLine("Записей не найдено!\n");
+            else
+                Console.WriteLine();
         }
         static bool Exit(ref bool isExit)
         {
