@@ -37,7 +37,7 @@
 ```
 ## Функции
 ```
-🔁 Кадровый учет
+🟡 Кадровый учет
 🔁 UIELEMENT
 🔁 READINT
 🔁 Brave new world
