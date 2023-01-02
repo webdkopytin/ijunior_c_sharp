@@ -6,39 +6,40 @@ namespace _001_PersonnelAccounting
     {
         static void Main(string[] args)
         {
-            int CommandAdd = 1;
-            int CommandViewAllRecords = 2;
-            int CommandDelete = 3;
-            int CommandFind = 4;
-            int CommandExit = 5;
+            const int CommandAdd = 1;
+            const int CommandViewAllRecords = 2;
+            const int CommandDelete = 3;
+            const int CommandFind = 4;
+            const int CommandExit = 5;
 
             int currentCommand;
 
             bool isExit = false;
 
-            string[] arrayFIO = new string[0];
-            string[] arrayCurrentPosition = new string[0];
+            string[] personRetrievings = new string[0];
+            string[] workingPositions = new string[0];
 
             while (isExit == false)
             {
-                ViewMenu(ref CommandAdd, ref CommandViewAllRecords, ref CommandDelete, ref CommandFind, ref CommandExit);
+                ViewMenu(CommandAdd, CommandViewAllRecords, CommandDelete, CommandFind, CommandExit);
 
                 Console.Write("Введите команду: ");
                 currentCommand = Convert.ToInt32(Console.ReadLine());
 
                 if (currentCommand == CommandAdd)
-                    AddRecord(ref arrayFIO, ref arrayCurrentPosition);
+                    AddRecord(ref personRetrievings, ref workingPositions);
                 else if (currentCommand == CommandViewAllRecords)
-                    ViewAllRecord(ref arrayFIO, ref arrayCurrentPosition);
+                    ViewAllRecord(personRetrievings, workingPositions);
                 else if (currentCommand == CommandDelete)
-                    DeleteRecord(ref arrayFIO, ref arrayCurrentPosition);
+                    DeleteRecord(ref personRetrievings, ref workingPositions);
                 else if (currentCommand == CommandFind)
-                    FindRecordForLastname(ref arrayFIO, ref arrayCurrentPosition);
+                    FindRecordForLastname(personRetrievings, workingPositions);
                 else if (currentCommand == CommandExit)
                     Exit(ref isExit);
             }
         }
-        static void ViewMenu(ref int CommandAdd, ref int CommandViewAllRecords, ref int CommandDelete, ref int CommandFind, ref int CommandExit)
+
+        static void ViewMenu(int CommandAdd, int CommandViewAllRecords, int CommandDelete, int CommandFind, int CommandExit)
         {
             Console.WriteLine(
                     "Управление каталогом досье (команды):\n" +
@@ -49,14 +50,15 @@ namespace _001_PersonnelAccounting
                     $"{CommandExit}) Выход\n"
                 );
         }
-        static void AddRecord(ref string[] arrayFIO, ref string[] arrayCurrentPosition)
+
+        static void AddRecord(ref string[] personRetrievings, ref string[] arrayCurrentPosition)
         {
-            string[] tempArrayFIO = new string[arrayFIO.Length + 1];
+            string[] tempPersonRetrievings = new string[personRetrievings.Length + 1];
             string[] tempArrayCurrentPosition = new string[arrayCurrentPosition.Length + 1];
 
-            for (int i = 0; i < arrayFIO.Length; i++)
+            for (int i = 0; i < personRetrievings.Length; i++)
             {
-                tempArrayFIO[i] = arrayFIO[i];
+                tempPersonRetrievings[i] = personRetrievings[i];
                 tempArrayCurrentPosition[i] = arrayCurrentPosition[i];
             }
 
@@ -66,56 +68,58 @@ namespace _001_PersonnelAccounting
             Console.Write("Введите должность: ");
             string currentPosition = Console.ReadLine();
 
-            tempArrayFIO[arrayFIO.Length] = FIO;
-            arrayFIO = tempArrayFIO;
+            tempPersonRetrievings[personRetrievings.Length] = FIO;
+            personRetrievings = tempPersonRetrievings;
 
             tempArrayCurrentPosition[arrayCurrentPosition.Length] = currentPosition;
             arrayCurrentPosition = tempArrayCurrentPosition;
 
             Console.WriteLine("Запись добавлена!\n");
         }
-        static void ViewAllRecord(ref string[] arrayFIO, ref string[] arrayCurrentPosition)
+
+        static void ViewAllRecord(string[] personRetrievings, string[] workingPositions)
         {
             int countRecord = 1;
             int startIndex;
 
             Console.WriteLine("\nЗаписи в базе данных\n");
 
-            for (startIndex = 0; startIndex < arrayFIO.Length; startIndex++)
+            for (startIndex = 0; startIndex < personRetrievings.Length; startIndex++)
             {
-                Console.WriteLine($"| {countRecord} | {arrayFIO[startIndex]} - {arrayCurrentPosition[startIndex]}");
+                Console.WriteLine($"| {countRecord} | {personRetrievings[startIndex]} - {workingPositions[startIndex]}");
 
                 countRecord++;
             }
 
             Console.WriteLine(startIndex == 0 ? "Записи в базе досье отсутствуют!\n" : $"\n...записей в базе: {startIndex}\n");
         }
-        static void DeleteRecord(ref string[] arrayFIO, ref string[] arrayCurrentPosition)
+
+        static void DeleteRecord(ref string[] personRetrievings, ref string[] workingPositions)
         {
             int numberForDelRecord;
             int countRecord = 0;
 
-            string[] tempArrayFIOBeforeDelRecord;
-            string[] tempArrayCPBeforeDelRecord;
+            string[] tempPersonRetrievingsBeforeDelRecord;
+            string[] tempWorkingPositionsBeforeDelRecord;
 
             Console.Write("\nВведите номер записи для удаления из досье: ");
             numberForDelRecord = Convert.ToInt32(Console.ReadLine());
 
-            if (numberForDelRecord > arrayFIO.Length || numberForDelRecord < 1)
+            if (numberForDelRecord > personRetrievings.Length || numberForDelRecord < 1)
             {
                 Console.WriteLine("Такой записи нет!\n");
             }
-            else if (numberForDelRecord == 1 && arrayFIO.Length == 1)
+            else if (numberForDelRecord == 1 && personRetrievings.Length == 1)
             {
-                arrayFIO = new string[0];
-                arrayCurrentPosition = new string[0];
+                personRetrievings = new string[0];
+                workingPositions = new string[0];
             }
-            else if (numberForDelRecord >= 1 && arrayFIO.Length >= 1)
+            else if (numberForDelRecord >= 1 && personRetrievings.Length >= 1)
             {
-                tempArrayFIOBeforeDelRecord = new string[arrayFIO.Length - 1];
-                tempArrayCPBeforeDelRecord = new string[arrayCurrentPosition.Length - 1];
+                tempPersonRetrievingsBeforeDelRecord = new string[personRetrievings.Length - 1];
+                tempWorkingPositionsBeforeDelRecord = new string[workingPositions.Length - 1];
 
-                for (int i = 0; i < arrayFIO.Length; i++)
+                for (int i = 0; i < personRetrievings.Length; i++)
                 {
                     if (numberForDelRecord == i + 1)
                     {
@@ -123,35 +127,36 @@ namespace _001_PersonnelAccounting
                     }
                     else
                     {
-                        tempArrayFIOBeforeDelRecord[countRecord] = arrayFIO[i];
-                        tempArrayCPBeforeDelRecord[countRecord] = arrayCurrentPosition[i];
+                        tempPersonRetrievingsBeforeDelRecord[countRecord] = personRetrievings[i];
+                        tempWorkingPositionsBeforeDelRecord[countRecord] = workingPositions[i];
                         countRecord++;
                     }
                 }
 
-                arrayFIO = tempArrayFIOBeforeDelRecord;
-                arrayCurrentPosition = tempArrayCPBeforeDelRecord;
+                personRetrievings = tempPersonRetrievingsBeforeDelRecord;
+                workingPositions = tempWorkingPositionsBeforeDelRecord;
             }
         }
-        static void FindRecordForLastname(ref string[] arrayFIO, ref string[] arrayCurrentPosition)
+
+        static void FindRecordForLastname(string[] personRetrievings, string[] workingPositions)
         {
             string findString;
 
-            string[] tempArrayFIO;
-            string[] findSuccessArrayFIO = new string[arrayFIO.Length];
+            string[] tempPersonRetrievings;
+            string[] findSuccessPersonRetrievings = new string[personRetrievings.Length];
 
             int countIndex = 0;
 
             Console.Write("Введите фамилию, которую необходимо найти в базе: ");
             findString = Console.ReadLine();
 
-            for (int i = 0; i < arrayFIO.Length; i++)
+            for (int i = 0; i < personRetrievings.Length; i++)
             {
-                tempArrayFIO = arrayFIO[i].Split(' ');
+                tempPersonRetrievings = personRetrievings[i].Split(' ');
 
-                if (findString == tempArrayFIO[0])
+                if (findString == tempPersonRetrievings[0])
                 {
-                    findSuccessArrayFIO[countIndex] = arrayFIO[i];
+                    findSuccessPersonRetrievings[countIndex] = personRetrievings[i];
 
                     countIndex++;
                 }
@@ -161,15 +166,15 @@ namespace _001_PersonnelAccounting
 
             countIndex = 0;
 
-            for (int i = 0; i < findSuccessArrayFIO.Length; i++)
+            for (int i = 0; i < findSuccessPersonRetrievings.Length; i++)
             {
-                if (findSuccessArrayFIO[i] == null)
+                if (findSuccessPersonRetrievings[i] == null)
                 {
                     continue;
                 }
                 else
                 {
-                    Console.WriteLine(findSuccessArrayFIO[i]);
+                    Console.WriteLine(findSuccessPersonRetrievings[i]);
                     countIndex++;
                 }
             }
@@ -179,6 +184,7 @@ namespace _001_PersonnelAccounting
             else
                 Console.WriteLine();
         }
+
         static bool Exit(ref bool isExit)
         {
             return isExit = true;
