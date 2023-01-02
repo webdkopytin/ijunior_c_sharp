@@ -33,7 +33,7 @@ namespace _001_PersonnelAccounting
                 else if (currentCommand == CommandDelete)
                     DeleteRecord(ref personRetrievings, ref workingPositions);
                 else if (currentCommand == CommandFind)
-                    FindRecordForLastname(personRetrievings, workingPositions);
+                    FindRecordForLastname(personRetrievings);
                 else if (currentCommand == CommandExit)
                     Exit(ref isExit);
             }
@@ -138,7 +138,7 @@ namespace _001_PersonnelAccounting
             }
         }
 
-        static void FindRecordForLastname(string[] personRetrievings, string[] workingPositions)
+        static void FindRecordForLastname(string[] personRetrievings)
         {
             string findString;
 
