@@ -38,7 +38,7 @@
 ## Функции - 🟡
 ```
 🟡 Кадровый учет
-🔁 UIELEMENT
+🟡 UIELEMENT
 🔁 READINT
 🔁 Brave new world
 🔁 КАНЗАС СИТИ ШАФЛ
