@@ -29,13 +29,13 @@ namespace _001_PersonnelAccounting
                 if (currentCommand == CommandAdd)
                     AddRecord(ref personRetrievings, ref workingPositions);
                 else if (currentCommand == CommandViewAllRecords)
-                    ViewAllRecord(personRetrievings, workingPositions);
+                    ViewAllRecords(personRetrievings, workingPositions);
                 else if (currentCommand == CommandDelete)
-                    DeleteRecord(ref personRetrievings, ref workingPositions);
+                    DeleteRecords(ref personRetrievings, ref workingPositions);
                 else if (currentCommand == CommandFind)
-                    FindRecordForLastname(personRetrievings);
+                    FindRecordForLastname(personRetrievings, workingPositions);
                 else if (currentCommand == CommandExit)
-                    Exit(ref isExit);
+                    isExit = true;
             }
         }
 
@@ -51,24 +51,57 @@ namespace _001_PersonnelAccounting
                 );
         }
 
-        static void AddRecord(ref string[] personRetrievings, ref string[] arrayCurrentPosition)
+        static string[] EnlargeTheArray(string[] enlargeString)
         {
-            string[] tempPersonRetrievings = new string[personRetrievings.Length + 1];
-            string[] tempArrayCurrentPosition = new string[arrayCurrentPosition.Length + 1];
+            string[] tempEnlargeString = new string[enlargeString.Length + 1];
 
-            for (int i = 0; i < personRetrievings.Length; i++)
+            for (int i = 0; i < enlargeString.Length; i++)
             {
-                tempPersonRetrievings[i] = personRetrievings[i];
-                tempArrayCurrentPosition[i] = arrayCurrentPosition[i];
+                tempEnlargeString[i] = enlargeString[i];
             }
 
+            enlargeString = tempEnlargeString;
+
+            return enlargeString;
+        }
+
+        static string[] ReducingEntries(string[] reducingString, int numberForDelRecord)
+        {
+            int countRecord = 0;
+
+            string[] tempPersonRetrievingsBeforeDelRecord = new string[reducingString.Length - 1];
+
+            for (int i = 0; i < reducingString.Length; i++)
+            {
+                if (numberForDelRecord == i + 1)
+                {
+                    continue;
+                }
+                else
+                {
+                    tempPersonRetrievingsBeforeDelRecord[countRecord] = reducingString[i];
+
+                    countRecord++;
+                }
+            }
+
+            reducingString = tempPersonRetrievingsBeforeDelRecord;
+
+            return reducingString;
+        }
+
+        static void AddRecord(ref string[] personRetrievings, ref string[] arrayCurrentPosition)
+        {
+            string[] tempPersonRetrievings = EnlargeTheArray(personRetrievings);
+            string[] tempArrayCurrentPosition = EnlargeTheArray(arrayCurrentPosition);
+
             Console.Write("\nВведите ФИО: ");
-            string FIO = Console.ReadLine();
+            string personRetrieving = Console.ReadLine();
 
             Console.Write("Введите должность: ");
             string currentPosition = Console.ReadLine();
 
-            tempPersonRetrievings[personRetrievings.Length] = FIO;
+            tempPersonRetrievings[personRetrievings.Length] = personRetrieving;
             personRetrievings = tempPersonRetrievings;
 
             tempArrayCurrentPosition[arrayCurrentPosition.Length] = currentPosition;
@@ -77,7 +110,7 @@ namespace _001_PersonnelAccounting
             Console.WriteLine("Запись добавлена!\n");
         }
 
-        static void ViewAllRecord(string[] personRetrievings, string[] workingPositions)
+        static void ViewAllRecords(string[] personRetrievings, string[] workingPositions)
         {
             int countRecord = 1;
             int startIndex;
@@ -94,10 +127,9 @@ namespace _001_PersonnelAccounting
             Console.WriteLine(startIndex == 0 ? "Записи в базе досье отсутствуют!\n" : $"\n...записей в базе: {startIndex}\n");
         }
 
-        static void DeleteRecord(ref string[] personRetrievings, ref string[] workingPositions)
+        static void DeleteRecords(ref string[] personRetrievings, ref string[] workingPositions)
         {
             int numberForDelRecord;
-            int countRecord = 0;
 
             string[] tempPersonRetrievingsBeforeDelRecord;
             string[] tempWorkingPositionsBeforeDelRecord;
@@ -116,39 +148,26 @@ namespace _001_PersonnelAccounting
             }
             else if (numberForDelRecord >= 1 && personRetrievings.Length >= 1)
             {
-                tempPersonRetrievingsBeforeDelRecord = new string[personRetrievings.Length - 1];
-                tempWorkingPositionsBeforeDelRecord = new string[workingPositions.Length - 1];
-
-                for (int i = 0; i < personRetrievings.Length; i++)
-                {
-                    if (numberForDelRecord == i + 1)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        tempPersonRetrievingsBeforeDelRecord[countRecord] = personRetrievings[i];
-                        tempWorkingPositionsBeforeDelRecord[countRecord] = workingPositions[i];
-                        countRecord++;
-                    }
-                }
+                tempPersonRetrievingsBeforeDelRecord = ReducingEntries(personRetrievings, numberForDelRecord);
+                tempWorkingPositionsBeforeDelRecord = ReducingEntries(workingPositions, numberForDelRecord);
 
                 personRetrievings = tempPersonRetrievingsBeforeDelRecord;
                 workingPositions = tempWorkingPositionsBeforeDelRecord;
             }
         }
 
-        static void FindRecordForLastname(string[] personRetrievings)
+        static void FindRecordForLastname(string[] personRetrievings, string[] workingPositions)
         {
             string findString;
 
             string[] tempPersonRetrievings;
-            string[] findSuccessPersonRetrievings = new string[personRetrievings.Length];
 
             int countIndex = 0;
 
             Console.Write("Введите фамилию, которую необходимо найти в базе: ");
             findString = Console.ReadLine();
+
+            Console.WriteLine("\nНайдены следующие записи:\n");
 
             for (int i = 0; i < personRetrievings.Length; i++)
             {
@@ -156,25 +175,8 @@ namespace _001_PersonnelAccounting
 
                 if (findString == tempPersonRetrievings[0])
                 {
-                    findSuccessPersonRetrievings[countIndex] = personRetrievings[i];
+                    Console.WriteLine($"{personRetrievings[i]} - {workingPositions[i]}");
 
-                    countIndex++;
-                }
-            }
-
-            Console.WriteLine("\nНайдены следующие записи:\n");
-
-            countIndex = 0;
-
-            for (int i = 0; i < findSuccessPersonRetrievings.Length; i++)
-            {
-                if (findSuccessPersonRetrievings[i] == null)
-                {
-                    continue;
-                }
-                else
-                {
-                    Console.WriteLine(findSuccessPersonRetrievings[i]);
                     countIndex++;
                 }
             }
@@ -183,11 +185,6 @@ namespace _001_PersonnelAccounting
                 Console.WriteLine("Записей не найдено!\n");
             else
                 Console.WriteLine();
-        }
-
-        static bool Exit(ref bool isExit)
-        {
-            return isExit = true;
         }
     }
 }
