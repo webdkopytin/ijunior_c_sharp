@@ -13,6 +13,7 @@ namespace _001_PersonnelAccounting
             const int CommandExit = 5;
 
             int currentCommand;
+            int numberForDelRecord;
 
             bool isExit = false;
 
@@ -31,7 +32,13 @@ namespace _001_PersonnelAccounting
                 else if (currentCommand == CommandViewAllRecords)
                     ViewAllRecords(personRetrievings, workingPositions);
                 else if (currentCommand == CommandDelete)
-                    DeleteRecords(ref personRetrievings, ref workingPositions);
+                {
+                    Console.Write("\nВведите номер записи для удаления из досье: ");
+                    numberForDelRecord = Convert.ToInt32(Console.ReadLine());
+
+                    DeleteRecords(ref personRetrievings, ref numberForDelRecord);
+                    DeleteRecords(ref workingPositions, ref numberForDelRecord);
+                }
                 else if (currentCommand == CommandFind)
                     FindRecordForLastname(personRetrievings, workingPositions);
                 else if (currentCommand == CommandExit)
@@ -90,10 +97,18 @@ namespace _001_PersonnelAccounting
             return reducingString;
         }
 
-        static void AddRecord(ref string[] personRetrievings, ref string[] arrayCurrentPosition)
+        static string[] Reassignments(string personRetrieving, ref string[] personRetrievings, string[] tempPersonRetrievings)
+        {
+            tempPersonRetrievings[personRetrievings.Length] = personRetrieving;
+            personRetrievings = tempPersonRetrievings;
+
+            return personRetrievings;
+        }
+
+        static void AddRecord(ref string[] personRetrievings, ref string[] currentPositions)
         {
             string[] tempPersonRetrievings = EnlargeArray(personRetrievings);
-            string[] tempArrayCurrentPosition = EnlargeArray(arrayCurrentPosition);
+            string[] tempArrayCurrentPositions = EnlargeArray(currentPositions);
 
             Console.Write("\nВведите ФИО: ");
             string personRetrieving = Console.ReadLine();
@@ -101,11 +116,8 @@ namespace _001_PersonnelAccounting
             Console.Write("Введите должность: ");
             string currentPosition = Console.ReadLine();
 
-            tempPersonRetrievings[personRetrievings.Length] = personRetrieving;
-            personRetrievings = tempPersonRetrievings;
-
-            tempArrayCurrentPosition[arrayCurrentPosition.Length] = currentPosition;
-            arrayCurrentPosition = tempArrayCurrentPosition;
+            Reassignments(personRetrieving, ref personRetrievings, tempPersonRetrievings);
+            Reassignments(currentPosition, ref currentPositions, tempArrayCurrentPositions);
 
             Console.WriteLine("Запись добавлена!\n");
         }
@@ -127,15 +139,9 @@ namespace _001_PersonnelAccounting
             Console.WriteLine(startIndex == 0 ? "Записи в базе досье отсутствуют!\n" : $"\n...записей в базе: {startIndex}\n");
         }
 
-        static void DeleteRecords(ref string[] personRetrievings, ref string[] workingPositions)
+        static void DeleteRecords(ref string[] personRetrievings, ref int numberForDelRecord)
         {
-            int numberForDelRecord;
-
             string[] tempPersonRetrievingsBeforeDelRecord;
-            string[] tempWorkingPositionsBeforeDelRecord;
-
-            Console.Write("\nВведите номер записи для удаления из досье: ");
-            numberForDelRecord = Convert.ToInt32(Console.ReadLine());
 
             if (numberForDelRecord > personRetrievings.Length || numberForDelRecord < 1)
             {
@@ -144,15 +150,12 @@ namespace _001_PersonnelAccounting
             else if (numberForDelRecord == 1 && personRetrievings.Length == 1)
             {
                 personRetrievings = new string[0];
-                workingPositions = new string[0];
             }
             else if (numberForDelRecord >= 1 && personRetrievings.Length >= 1)
             {
                 tempPersonRetrievingsBeforeDelRecord = ReducingEntries(personRetrievings, numberForDelRecord);
-                tempWorkingPositionsBeforeDelRecord = ReducingEntries(workingPositions, numberForDelRecord);
 
                 personRetrievings = tempPersonRetrievingsBeforeDelRecord;
-                workingPositions = tempWorkingPositionsBeforeDelRecord;
             }
         }
 
