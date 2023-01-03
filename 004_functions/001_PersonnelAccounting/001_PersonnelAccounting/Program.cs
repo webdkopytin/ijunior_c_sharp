@@ -51,7 +51,7 @@ namespace _001_PersonnelAccounting
                 );
         }
 
-        static string[] EnlargeTheArray(string[] enlargeString)
+        static string[] EnlargeArray(string[] enlargeString)
         {
             string[] tempEnlargeString = new string[enlargeString.Length + 1];
 
@@ -92,8 +92,8 @@ namespace _001_PersonnelAccounting
 
         static void AddRecord(ref string[] personRetrievings, ref string[] arrayCurrentPosition)
         {
-            string[] tempPersonRetrievings = EnlargeTheArray(personRetrievings);
-            string[] tempArrayCurrentPosition = EnlargeTheArray(arrayCurrentPosition);
+            string[] tempPersonRetrievings = EnlargeArray(personRetrievings);
+            string[] tempArrayCurrentPosition = EnlargeArray(arrayCurrentPosition);
 
             Console.Write("\nВведите ФИО: ");
             string personRetrieving = Console.ReadLine();
