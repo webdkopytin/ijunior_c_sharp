@@ -9,7 +9,9 @@ namespace _002_UIElement
             int health = 3, maxHealth = 10;
             int mana = 3, maxMana = 10;
 
-            while (true)
+            bool isOpen = true;
+
+            while (isOpen)
             {
                 DrawBar(health, maxHealth, ConsoleColor.Red, 0, '_');
                 DrawBar(mana, maxMana, ConsoleColor.Blue, 1, '_');
@@ -37,8 +39,10 @@ namespace _002_UIElement
             }
 
             Console.SetCursorPosition(0, position);
+
             Console.Write('[');
             Console.BackgroundColor = color;
+
             Console.Write(bar);
             Console.BackgroundColor = defaultColor;
 
