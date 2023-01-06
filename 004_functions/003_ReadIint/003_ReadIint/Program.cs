@@ -6,12 +6,25 @@ namespace _003_ReadIint
     {
         static void Main(string[] args)
         {
-            //Написать функцию, которая запрашивает число у пользователя(с помощью метода Console.ReadLine() )
-            //и пытается сконвертировать его в тип int(с помощью int.TryParse())
-            //Если конвертация не удалась у пользователя запрашивается число повторно до тех пор,
-            //пока не будет введено верно. После ввода, который удалось преобразовать в число, число возвращается.
-            //P.S Задача решается с помощью циклов
-            //P.S Также в TryParse используется модфикатор параметра out
+            bool isOpen = true;
+
+            string stringToNumber = "";
+
+            while (isOpen)
+            {
+                Console.Write("Попытка конвертации в тип int (с помощью int.TryParse): ");
+                stringToNumber = Console.ReadLine();
+
+                bool parseSuccessful = int.TryParse(stringToNumber, out int result);
+
+                if (parseSuccessful)
+                    isOpen = false;
+                else
+                    Console.WriteLine("Неуспешно, повторная попытка...");
+            }
+
+            Console.WriteLine("Выполнено успешно! Сконвертированное число: " + stringToNumber);
+            Console.ReadKey();
         }
     }
 }
