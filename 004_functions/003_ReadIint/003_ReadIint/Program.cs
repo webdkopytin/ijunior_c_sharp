@@ -6,25 +6,30 @@ namespace _003_ReadIint
     {
         static void Main(string[] args)
         {
-            bool isOpen = true;
+            int resultParse = ParseStringToInt();
 
-            string stringToNumber = "";
+            Console.WriteLine("Выполнено успешно! Сконвертированное число: " + resultParse);
+            Console.ReadKey();
+        }
+
+        static int ParseStringToInt()
+        {
+            int result = 0;
+
+            bool isOpen = true;
 
             while (isOpen)
             {
                 Console.Write("Попытка конвертации в тип int (с помощью int.TryParse): ");
-                stringToNumber = Console.ReadLine();
+                string stringToNumber = Console.ReadLine();
 
-                bool parseSuccessful = int.TryParse(stringToNumber, out int result);
-
-                if (parseSuccessful)
+                if (int.TryParse(stringToNumber, out result))
                     isOpen = false;
                 else
                     Console.WriteLine("Неуспешно, повторная попытка...");
             }
 
-            Console.WriteLine("Выполнено успешно! Сконвертированное число: " + stringToNumber);
-            Console.ReadKey();
+            return result;
         }
     }
 }
