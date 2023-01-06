@@ -39,7 +39,7 @@
 ```
 🟡 Кадровый учет
 🟡 UIELEMENT
-🔁 READINT
+🟡 READINT
 🔁 Brave new world
 🔁 КАНЗАС СИТИ ШАФЛ
 ```
