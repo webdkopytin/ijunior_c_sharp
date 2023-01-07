@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace _004_BraveNewWorld
 {
@@ -6,11 +7,43 @@ namespace _004_BraveNewWorld
     {
         static void Main(string[] args)
         {
-            // Сделать игровую карту с помощью двумерного массива.
-            // Сделать функцию рисования карты. Помимо этого, дать
-            // пользователю возможность перемещаться по карте и взаимодействовать
-            // с элементами(например пользователь не может пройти сквозь стену)
-            // Все элементы являются обычными символами
+            string mapName = "Map1";
+
+            char[,] map = ReadMap(mapName);
+
+            DrawMap(map);
+
+            Console.ReadKey();
+        }
+
+        static void DrawMap(char[,] map)
+        {
+            for (int i = 0; i < map.GetLength(0); i++)
+            {
+                for (int j = 0; j < map.GetLength(1); j++)
+                {
+                    Console.Write(map[i, j]);
+                }
+
+                Console.WriteLine();
+            }
+        }
+
+        static char[,] ReadMap(string mapName)
+        {
+            string[] readMap = File.ReadAllLines($"{mapName}.txt");
+
+            char[,] map = new char[readMap.Length, readMap[0].Length];
+
+            for (int i = 0; i < map.GetLength(0); i++)
+            {
+                for (int j = 0; j < map.GetLength(1); j++)
+                {
+                    map[i, j] = readMap[i][j];
+                }
+            }
+
+            return map;
         }
     }
 }
