@@ -6,47 +6,57 @@ namespace _001_PersonnelAccounting
     {
         static void Main(string[] args)
         {
-            const int CommandAdd = 1;
-            const int CommandViewAllRecords = 2;
-            const int CommandDelete = 3;
-            const int CommandFind = 4;
-            const int CommandExit = 5;
-
-            int currentCommand;
-            int numberDelRecord;
-
-            bool isExit = false;
+            const string CommandAdd = "1";
+            const string CommandViewAllRecords = "2";
+            const string CommandDelete = "3";
+            const string CommandFind = "4";
+            const string CommandExit = "5";
 
             string[] personRetrievings = new string[0];
             string[] workingPositions = new string[0];
+
+            string currentCommand;
+            string personRetrieving;
+            string currentPosition;
+
+            int numberDelRecord;
+
+            bool isExit = false;
 
             while (isExit == false)
             {
                 ViewMenu(CommandAdd, CommandViewAllRecords, CommandDelete, CommandFind, CommandExit);
 
                 Console.Write("Введите команду: ");
-                currentCommand = Convert.ToInt32(Console.ReadLine());
+                currentCommand = Console.ReadLine();
 
                 if (currentCommand == CommandAdd)
-                    AddRecord(ref personRetrievings, ref workingPositions);
+                {
+                    InputUserData(out personRetrieving, out currentPosition);
+                    AddRecord(ref personRetrievings, ref workingPositions, personRetrieving, currentPosition);
+                }
                 else if (currentCommand == CommandViewAllRecords)
+                {
                     ViewAllRecords(personRetrievings, workingPositions);
+                }
                 else if (currentCommand == CommandDelete)
                 {
-                    Console.Write("\nВведите номер записи для удаления из досье: ");
-                    numberDelRecord = Convert.ToInt32(Console.ReadLine());
-
+                    InputDelNumber(out numberDelRecord);
                     DeleteRecords(ref personRetrievings, ref numberDelRecord);
                     DeleteRecords(ref workingPositions, ref numberDelRecord);
                 }
                 else if (currentCommand == CommandFind)
+                {
                     FindRecordLastname(personRetrievings, workingPositions);
+                }
                 else if (currentCommand == CommandExit)
+                {
                     isExit = true;
+                }
             }
         }
 
-        static void ViewMenu(int CommandAdd, int CommandViewAllRecords, int CommandDelete, int CommandFind, int CommandExit)
+        static void ViewMenu(string CommandAdd, string CommandViewAllRecords, string CommandDelete, string CommandFind, string CommandExit)
         {
             Console.WriteLine(
                     "Управление каталогом досье (команды):\n" +
@@ -56,6 +66,23 @@ namespace _001_PersonnelAccounting
                     $"{CommandFind}) Поиск по фамилии\n" +
                     $"{CommandExit}) Выход\n"
                 );
+        }
+
+        static int InputDelNumber(out int numberDelRecord)
+        {
+            Console.Write("\nВведите номер записи для удаления из досье: ");
+            numberDelRecord = Convert.ToInt32(Console.ReadLine());
+
+            return numberDelRecord;
+        }
+
+        static void InputUserData(out string personRetrieving, out string currentPosition)
+        {
+            Console.Write("\nВведите ФИО: ");
+            personRetrieving = Console.ReadLine();
+
+            Console.Write("Введите должность: ");
+            currentPosition = Console.ReadLine();
         }
 
         static string[] EnlargeArray(string[] enlargeStrings)
@@ -105,16 +132,10 @@ namespace _001_PersonnelAccounting
             return personRetrievings;
         }
 
-        static void AddRecord(ref string[] personRetrievings, ref string[] currentPositions)
+        static void AddRecord(ref string[] personRetrievings, ref string[] currentPositions, string personRetrieving, string currentPosition)
         {
             string[] tempPersonRetrievings = EnlargeArray(personRetrievings);
             string[] tempArrayCurrentPositions = EnlargeArray(currentPositions);
-
-            Console.Write("\nВведите ФИО: ");
-            string personRetrieving = Console.ReadLine();
-
-            Console.Write("Введите должность: ");
-            string currentPosition = Console.ReadLine();
 
             Reassignments(personRetrieving, ref personRetrievings, tempPersonRetrievings);
             Reassignments(currentPosition, ref currentPositions, tempArrayCurrentPositions);
