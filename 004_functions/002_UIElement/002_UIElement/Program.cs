@@ -6,8 +6,10 @@ namespace _002_UIElement
     {
         static void Main(string[] args)
         {
-            int health = 3, maxHealth = 10;
-            int mana = 3, maxMana = 10;
+            int health = 3;
+            int maxHealth = 10;
+            int mana = 3;
+            int maxMana = 10;
 
             bool isOpen = true;
 
