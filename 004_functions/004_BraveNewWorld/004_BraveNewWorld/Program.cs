@@ -11,8 +11,10 @@ namespace _004_BraveNewWorld
             
             bool isPlaing = true;
 
-            int snakeX, snakeY;
-            int snakeDX = 0, snakeDY = 1;
+            int snakeX;
+            int snakeY;
+            int snakeDX = 0;
+            int snakeDY = 1;
 
             string mapName = "Map1";
 
