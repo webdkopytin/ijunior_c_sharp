@@ -6,9 +6,9 @@ namespace _002_UIElement
     {
         static void Main(string[] args)
         {
-            int health = 10;
+            int health = 5;
             int maxHealth = 10;
-            int mana = 10;
+            int mana = 5;
             int maxMana = 10;
 
             bool isOpen = true;
@@ -32,7 +32,7 @@ namespace _002_UIElement
 
         static void DrawBar(int value, int maxValue, ConsoleColor color, int position, char symbol = ' ')
         {
-            if (value > 0 && value <= maxValue)
+            if (value >= 0 && value <= maxValue)
             {
                 ConsoleColor defaultColor = Console.BackgroundColor;
                 string bar = "";
