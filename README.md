@@ -41,7 +41,7 @@
 🟡 UIELEMENT
 🟡 READINT
 🟡 Brave new world
-🔁 КАНЗАС СИТИ ШАФЛ
+🟡 КАНЗАС СИТИ ШАФЛ
 ```
 ## Коллекции
 ```
