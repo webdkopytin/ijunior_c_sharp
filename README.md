@@ -3,8 +3,6 @@
 
 ✅ [Переменные](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/001_basics_of_programming/001_naming%20of%20variables/ConsoleApp3/Program.cs)
 
-✅ Что выдается в консоль и почему
-
 ✅ [Работа со строками](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/001_basics_of_programming/002_planned%20income/ConsoleApp4/Program.cs)
 
 ✅ [Картинки](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/001_basics_of_programming/003_pictures/ConsoleApp5/Program.cs)
