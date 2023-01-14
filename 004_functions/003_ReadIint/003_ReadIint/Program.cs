@@ -6,13 +6,13 @@ namespace _003_ReadIint
     {
         static void Main(string[] args)
         {
-            int resultParse = ParseStringToInt();
+            int resultParse = ReceiveNumber();
 
             Console.WriteLine("Выполнено успешно! Сконвертированное число: " + resultParse);
             Console.ReadKey();
         }
 
-        static int ParseStringToInt()
+        static int ReceiveNumber()
         {
             int result = 0;
 
