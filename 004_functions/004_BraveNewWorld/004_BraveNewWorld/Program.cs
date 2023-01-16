@@ -8,61 +8,82 @@ namespace _004_BraveNewWorld
         static void Main(string[] args)
         {
             Console.CursorVisible = false;
-            
-            bool isPlaing = true;
 
-            int snakeX;
-            int snakeY;
-            int snakeDX = 0;
-            int snakeDY = 1;
+            bool isPlaing = true;
+            bool wallDefinition = true;
+
+            int snakePositionX;
+            int snakePositionY;
+            int snakeDirectionX = 0;
+            int snakeDirectionY = 1;
+
+            char wallSymbol = '#';
+            char snakeSymbol = 'o';
 
             string mapName = "Map1";
 
-            char[,] map = ReadMap(mapName, out snakeX, out snakeY);
+            char[,] map = ReadMap(mapName, out snakePositionX, out snakePositionY);
 
             DrawMap(map);
 
             while (isPlaing)
             {
-                if(Console.KeyAvailable)
+                if (Console.KeyAvailable)
                 {
-                    ConsoleKeyInfo key = Console.ReadKey(true);
+                    SetDirection(ref snakeDirectionX, ref snakeDirectionY);
 
-                    switch(key.Key)
-                    {
-                        case ConsoleKey.UpArrow:
-                            snakeDX = -1;
-                            snakeDY = 0;
-                            break;
-                        
-                        case ConsoleKey.DownArrow:
-                            snakeDX = 1;
-                            snakeDY = 0;
-                            break;
+                    wallDefinition = map[snakePositionX + snakeDirectionX, snakePositionY + snakeDirectionY] != wallSymbol;
 
-                        case ConsoleKey.LeftArrow:
-                            snakeDX = 0;
-                            snakeDY = -1;
-                            break;
-
-                        case ConsoleKey.RightArrow:
-                            snakeDX = 0;
-                            snakeDY = 1;
-                            break;
-                    }
-
-                    if(map[snakeX + snakeDX, snakeY + snakeDY] != '#')
-                    {
-                        Console.SetCursorPosition(snakeY, snakeX);
-                        Console.WriteLine(" ");
-
-                        snakeX += snakeDX;
-                        snakeY += snakeDY;
-
-                        Console.SetCursorPosition(snakeY, snakeX);
-                        Console.WriteLine('o');
-                    }
+                    DrawMovement(ref wallDefinition, ref snakePositionX, ref snakePositionY, ref snakeDirectionX, ref snakeDirectionY, wallSymbol, snakeSymbol);
                 }
+            }
+        }
+
+        static void DrawMovement(ref bool wallDefinition, ref int snakePositionX, ref int snakePositionY, ref int snakeDirectionX, ref int snakeDirectionY, char wallSymbol, char snakeSymbol)
+        {
+            if (wallDefinition)
+            {
+                Console.SetCursorPosition(snakePositionY, snakePositionX);
+                Console.WriteLine(" ");
+
+                snakePositionX += snakeDirectionX;
+                snakePositionY += snakeDirectionY;
+
+                Console.SetCursorPosition(snakePositionY, snakePositionX);
+                Console.WriteLine(snakeSymbol);
+            }
+        }
+
+        static void SetDirection(ref int snakeDirectionX, ref int snakeDirectionY)
+        {
+            const ConsoleKey upArrow = ConsoleKey.UpArrow;
+            const ConsoleKey downArrow = ConsoleKey.DownArrow;
+            const ConsoleKey leftArrow = ConsoleKey.LeftArrow;
+            const ConsoleKey rightArrow = ConsoleKey.RightArrow;
+
+            ConsoleKeyInfo key = Console.ReadKey(true);
+
+            switch (key.Key)
+            {
+                case upArrow:
+                    snakeDirectionX = -1;
+                    snakeDirectionY = 0;
+                    break;
+
+                case downArrow:
+                    snakeDirectionX = 1;
+                    snakeDirectionY = 0;
+                    break;
+
+                case leftArrow:
+                    snakeDirectionX = 0;
+                    snakeDirectionY = -1;
+                    break;
+
+                case rightArrow:
+                    snakeDirectionX = 0;
+                    snakeDirectionY = 1;
+                    break;
             }
         }
 
