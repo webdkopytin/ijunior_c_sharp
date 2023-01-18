@@ -73,7 +73,7 @@
 
 ✅ [Толковый словарь](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/005_сollections/001_ExplanatoryDictionary/001_ExplanatoryDictionary/Program.cs)
 
-🟡 [Очередь в магазине](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/005_сollections/002_QueueStore/002_QueueStore/Program.cs)
+✅ [Очередь в магазине](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/005_сollections/002_QueueStore/002_QueueStore/Program.cs)
 
 🟡 [Динамический массив продвинутый](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/005_сollections/003_DynamicArrayPro/003_DynamicArrayPro/Program.cs)
 
