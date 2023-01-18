@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace _002_QueueStore
@@ -29,12 +28,15 @@ namespace _002_QueueStore
                 for (int j = 0; j < queueBuyers[i].Length; j++)
                 {
                     Console.Write(queueBuyers[i][j] + " ");
+
+                    deposit += queueBuyers[i][j];
                 }
 
-                Console.WriteLine();
+                Console.WriteLine($"\n\n{i}й клиент ушел. Общий счет в кассе сегодня: {deposit} рублей");
+                Console.WriteLine("Для продолжения нажмите любую кнопку!\n\n");
+                Console.ReadKey();
+                Console.Clear();
             }
-
-            Console.ReadKey();
         }
     }
 }
