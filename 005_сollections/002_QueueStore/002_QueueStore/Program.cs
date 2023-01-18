@@ -26,7 +26,12 @@ namespace _002_QueueStore
 
             for (int i = 1; i <= queueBuyers.Count; i++)
             {
-                Console.WriteLine(queueBuyers);
+                for (int j = 0; j < queueBuyers[i].Length; j++)
+                {
+                    Console.Write(queueBuyers[i][j] + " ");
+                }
+
+                Console.WriteLine();
             }
 
             Console.ReadKey();
