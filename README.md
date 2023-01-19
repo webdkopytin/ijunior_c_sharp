@@ -77,7 +77,7 @@
 
 🟡 [Динамический массив продвинутый](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/005_сollections/003_DynamicArrayPro/003_DynamicArrayPro/Program.cs)
 
-🔁 Кадровый учет продвинутый
+🟡 [Кадровый учет продвинутый](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/005_сollections/004_PersonnelAccountingPro/004_PersonnelAccountingPro/Program.cs)
 
 🔁 Объединение в одну коллекцию
 
