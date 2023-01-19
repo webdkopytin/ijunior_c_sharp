@@ -56,31 +56,31 @@ namespace _004_BraveNewWorld
 
         static void SetDirection(ref int snakeDirectionX, ref int snakeDirectionY)
         {
-            const ConsoleKey upArrow = ConsoleKey.UpArrow;
-            const ConsoleKey downArrow = ConsoleKey.DownArrow;
-            const ConsoleKey leftArrow = ConsoleKey.LeftArrow;
-            const ConsoleKey rightArrow = ConsoleKey.RightArrow;
+            const ConsoleKey ButtonMovingUp = ConsoleKey.UpArrow;
+            const ConsoleKey ButtonMovingDown = ConsoleKey.DownArrow;
+            const ConsoleKey ButtonMovingLeft = ConsoleKey.LeftArrow;
+            const ConsoleKey ButtonMovingRight = ConsoleKey.RightArrow;
 
             ConsoleKeyInfo key = Console.ReadKey(true);
 
             switch (key.Key)
             {
-                case upArrow:
+                case ButtonMovingUp:
                     snakeDirectionX = -1;
                     snakeDirectionY = 0;
                     break;
 
-                case downArrow:
+                case ButtonMovingDown:
                     snakeDirectionX = 1;
                     snakeDirectionY = 0;
                     break;
 
-                case leftArrow:
+                case ButtonMovingLeft:
                     snakeDirectionX = 0;
                     snakeDirectionY = -1;
                     break;
 
-                case rightArrow:
+                case ButtonMovingRight:
                     snakeDirectionX = 0;
                     snakeDirectionY = 1;
                     break;
