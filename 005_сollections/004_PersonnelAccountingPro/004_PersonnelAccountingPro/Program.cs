@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _004_PersonnelAccountingPro
 {
@@ -10,14 +6,77 @@ namespace _004_PersonnelAccountingPro
     {
         static void Main(string[] args)
         {
-            // В функциях вы выполняли задание "Кадровый учёт"
-            // Используя одну из изученных коллекций, вы смогли бы сильно себе упростить код выполненной программы, ведь у нас данные, это ФИО и позиция.
-            // Поиск в данном задании не нужен.
+            const int CommandAddRecord = 1;
+            const int CommandViewAllRecords = 2;
+            const int CommandDeleteRecord = 3;
+            const int CommandExit = 4;
 
-            // 1) добавить досье
-            // 2) вывести все досье(в одну строку через “-” фио и должность)
-            // 3) удалить досье
-            // 4) выход
+            bool isOpen = true;
+            bool isCommand;
+
+            int parseCommand;
+
+            string inputFirstLastName;
+            string inputPosition;
+            string inputCommand;
+
+            while (isOpen)
+            {
+                Console.Clear();
+                Console.SetCursorPosition(0, 0);
+
+                Console.WriteLine(
+                        $"{CommandAddRecord} - добавить досье\n" +
+                        $"{CommandViewAllRecords} - вывести все досье\n" +
+                        $"{CommandDeleteRecord} - удалить досье\n" +
+                        $"{CommandExit} - выход\n"
+                    );
+
+                Console.Write("Введите команду: ");
+                inputCommand = Console.ReadLine();
+
+                isCommand = int.TryParse(inputCommand, out parseCommand);
+
+                if (isCommand && parseCommand == CommandExit)
+                    isOpen = false;
+
+                if (isCommand && isOpen)
+                {
+                    switch (parseCommand)
+                    {
+                        case CommandAddRecord:
+                            AddRecord(out inputFirstLastName, out inputPosition);
+                            break;
+
+                        case CommandViewAllRecords:
+                            ViewAllRecords();
+                            break;
+
+                        case CommandDeleteRecord:
+                            DeleteRecord();
+                            break;
+                    }
+                }
+            }
+        }
+
+        static void AddRecord(out string inputFirstLastName, out string inputPosition)
+        {
+            Console.WriteLine("Введите ФИО: ");
+            inputFirstLastName = Console.ReadLine();
+
+            Console.WriteLine("Введите должность: ");
+            inputPosition = Console.ReadLine();
+        }
+
+        static void ViewAllRecords()
+        {
+
+        }
+
+        static void DeleteRecord()
+        {
+
         }
     }
 }
