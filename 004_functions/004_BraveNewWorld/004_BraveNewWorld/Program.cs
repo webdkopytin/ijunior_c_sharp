@@ -22,7 +22,7 @@ namespace _004_BraveNewWorld
 
             string mapName = "Map1";
 
-            char[,] map = ReadMap(mapName, out snakePositionX, out snakePositionY);
+            char[,] map = ReadMap(mapName, snakeSymbol, out snakePositionX, out snakePositionY);
 
             DrawMap(map);
 
@@ -34,12 +34,12 @@ namespace _004_BraveNewWorld
 
                     wallDefinition = map[snakePositionX + snakeDirectionX, snakePositionY + snakeDirectionY] != wallSymbol;
 
-                    DrawMovement(ref wallDefinition, ref snakePositionX, ref snakePositionY, ref snakeDirectionX, ref snakeDirectionY, wallSymbol, snakeSymbol);
+                    DrawMovement(wallDefinition, ref snakePositionX, ref snakePositionY, snakeDirectionX, snakeDirectionY, wallSymbol, snakeSymbol);
                 }
             }
         }
 
-        static void DrawMovement(ref bool wallDefinition, ref int snakePositionX, ref int snakePositionY, ref int snakeDirectionX, ref int snakeDirectionY, char wallSymbol, char snakeSymbol)
+        static void DrawMovement(bool wallDefinition, ref int snakePositionX, ref int snakePositionY, int snakeDirectionX, int snakeDirectionY, char wallSymbol, char snakeSymbol)
         {
             if (wallDefinition)
             {
@@ -100,7 +100,7 @@ namespace _004_BraveNewWorld
             }
         }
 
-        static char[,] ReadMap(string mapName, out int snakeX, out int snakeY)
+        static char[,] ReadMap(string mapName, char snakeSymbol, out int snakeX, out int snakeY)
         {
             snakeX = 0;
             snakeY = 0;
@@ -115,7 +115,7 @@ namespace _004_BraveNewWorld
                 {
                     map[i, j] = readMap[i][j];
 
-                    if (map[i, j] == 'o')
+                    if (map[i, j] == snakeSymbol)
                     {
                         snakeX = i;
                         snakeY = j;
