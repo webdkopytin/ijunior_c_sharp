@@ -11,12 +11,11 @@ namespace _003_DynamicArrayPro
             const string CommandExitProgram = "exit";
 
             bool isOpen = true;
-            bool isNumber;
+            bool isNumber = false;
 
             string inputUserNumber;
 
-            int resultParse;
-            int resultSum = 0;
+            int resultParse = 0;
 
             List<int> inputNumbers = new List<int>();
 
@@ -30,7 +29,8 @@ namespace _003_DynamicArrayPro
                 Console.Write("Программа запоминает введенные числа, текст игнорируется. Введите команду или число: ");
                 inputUserNumber = Console.ReadLine();
 
-                isNumber = int.TryParse(inputUserNumber, out resultParse);
+                if (isOpen && inputUserNumber != CommandAmountNumbers && inputUserNumber != CommandExitProgram)
+                    isNumber = int.TryParse(inputUserNumber, out resultParse);
 
                 isOpen = inputUserNumber == CommandExitProgram ? false : true;
 
@@ -38,12 +38,14 @@ namespace _003_DynamicArrayPro
                     inputNumbers.Add(resultParse);
 
                 if (inputUserNumber == CommandAmountNumbers)
-                    GetSumAllInputNumbers(ref resultSum, inputNumbers);
+                    ShowSumAllInputNumbers(inputNumbers);
             }
         }
 
-        static void GetSumAllInputNumbers(ref int resultSum, List<int> inputNumbers)
+        static void ShowSumAllInputNumbers(List<int> inputNumbers)
         {
+            int resultSum = 0;
+
             foreach (int number in inputNumbers)
                 resultSum += number;
 
