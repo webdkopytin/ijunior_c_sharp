@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace _004_PersonnelAccountingPro
 {
@@ -20,6 +21,8 @@ namespace _004_PersonnelAccountingPro
             string inputPosition;
             string inputCommand;
 
+            Dictionary<string, string> dossierArchive = new Dictionary<string, string>();
+
             while (isOpen)
             {
                 Console.Clear();
@@ -37,46 +40,67 @@ namespace _004_PersonnelAccountingPro
 
                 isCommand = int.TryParse(inputCommand, out parseCommand);
 
-                if (isCommand && parseCommand == CommandExit)
-                    isOpen = false;
-
                 if (isCommand && isOpen)
                 {
                     switch (parseCommand)
                     {
                         case CommandAddRecord:
-                            AddRecord(out inputFirstLastName, out inputPosition);
+                            AddRecord(out inputFirstLastName, out inputPosition, ref dossierArchive);
+
+                            Console.WriteLine($"\n\nЗапись добавлена.\nДля продолжения нажмите любую кнопку...");
+                            Console.ReadKey();
+
                             break;
 
                         case CommandViewAllRecords:
-                            ViewAllRecords();
+                            ViewAllRecords(dossierArchive);
+
+                            Console.WriteLine($"\n\nВыведены все записи.\nДля продолжения нажмите любую кнопку...");
+                            Console.ReadKey();
+
                             break;
 
                         case CommandDeleteRecord:
-                            DeleteRecord();
+                            DeleteRecord(ref dossierArchive);
+
+                            Console.WriteLine($"\n\nЗапись удалена.\nДля продолжения нажмите любую кнопку...");
+                            Console.ReadKey();
+
+                            break;
+
+                        case CommandExit:
+                            isOpen = false;
                             break;
                     }
                 }
             }
         }
 
-        static void AddRecord(out string inputFirstLastName, out string inputPosition)
+        static void AddRecord(out string inputFirstLastName, out string inputPosition, ref Dictionary<string, string> dossierArchive)
         {
-            Console.WriteLine("Введите ФИО: ");
+            Console.Write("Введите ФИО: ");
             inputFirstLastName = Console.ReadLine();
 
-            Console.WriteLine("Введите должность: ");
+            Console.Write("Введите должность: ");
             inputPosition = Console.ReadLine();
+
+            dossierArchive.Add(inputFirstLastName, inputPosition);
         }
 
-        static void ViewAllRecords()
+        static void ViewAllRecords(Dictionary<string, string> dossierArchive)
         {
-
+            foreach (var record in dossierArchive)
+            {
+                Console.Write("\n" + record.Key + " - " + record.Value);
+            }
         }
 
-        static void DeleteRecord()
+        static void DeleteRecord(ref Dictionary<string, string> dossierArchive)
         {
+            Console.Write("Введите ФИО человека, которого необходимо удалить из досье: ");
+            string deleteFirstLastName = Console.ReadLine();
 
+            dossierArchive.Remove(deleteFirstLastName);
         }
     }
 }
