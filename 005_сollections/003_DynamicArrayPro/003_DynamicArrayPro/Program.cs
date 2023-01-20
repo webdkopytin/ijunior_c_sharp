@@ -11,7 +11,6 @@ namespace _003_DynamicArrayPro
             const string CommandExitProgram = "exit";
 
             bool isOpen = true;
-            bool isNumber = false;
 
             string inputUserNumber;
 
@@ -29,16 +28,22 @@ namespace _003_DynamicArrayPro
                 Console.Write("Программа запоминает введенные числа, текст игнорируется. Введите команду или число: ");
                 inputUserNumber = Console.ReadLine();
 
-                if (isOpen && inputUserNumber != CommandAmountNumbers && inputUserNumber != CommandExitProgram)
-                    isNumber = int.TryParse(inputUserNumber, out resultParse);
+                int.TryParse(inputUserNumber, out resultParse);
 
-                isOpen = inputUserNumber == CommandExitProgram ? false : true;
+                switch (inputUserNumber)
+                {
+                    case CommandExitProgram:
+                        isOpen = false;
+                        break;
 
-                if (isOpen && isNumber)
-                    inputNumbers.Add(resultParse);
+                    case CommandAmountNumbers:
+                        ShowSumAllInputNumbers(inputNumbers);
+                        break;
 
-                if (inputUserNumber == CommandAmountNumbers)
-                    ShowSumAllInputNumbers(inputNumbers);
+                    default:
+                        inputNumbers.Add(resultParse);
+                        break;
+                }
             }
         }
 
