@@ -49,7 +49,6 @@ namespace _004_PersonnelAccountingPro
 
                             Console.WriteLine($"\n\nЗапись добавлена.\nДля продолжения нажмите любую кнопку...");
                             Console.ReadKey();
-
                             break;
 
                         case CommandViewAllRecords:
@@ -57,7 +56,6 @@ namespace _004_PersonnelAccountingPro
 
                             Console.WriteLine($"\n\nВыведены все записи.\nДля продолжения нажмите любую кнопку...");
                             Console.ReadKey();
-
                             break;
 
                         case CommandDeleteRecord:
@@ -65,7 +63,6 @@ namespace _004_PersonnelAccountingPro
 
                             Console.WriteLine($"\n\nЗапись удалена.\nДля продолжения нажмите любую кнопку...");
                             Console.ReadKey();
-
                             break;
 
                         case CommandExit:
