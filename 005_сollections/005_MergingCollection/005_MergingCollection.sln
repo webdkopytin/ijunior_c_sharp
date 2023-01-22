@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.4.33213.308
+VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "005_MergingCollection", "005_MergingCollection\005_MergingCollection.csproj", "{B277F201-AF90-44BF-A3D0-B0D65D5B550D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "005_MergingCollection", "005_MergingCollection\005_MergingCollection.csproj", "{440F215E-0BDD-4239-A5CF-DED18B51963C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B277F201-AF90-44BF-A3D0-B0D65D5B550D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B277F201-AF90-44BF-A3D0-B0D65D5B550D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B277F201-AF90-44BF-A3D0-B0D65D5B550D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B277F201-AF90-44BF-A3D0-B0D65D5B550D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{440F215E-0BDD-4239-A5CF-DED18B51963C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{440F215E-0BDD-4239-A5CF-DED18B51963C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{440F215E-0BDD-4239-A5CF-DED18B51963C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{440F215E-0BDD-4239-A5CF-DED18B51963C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {81046BAF-30C9-4583-802E-C9A4B609EDE9}
+		SolutionGuid = {48823BA5-556B-4C9A-ACA9-AB13FD8E7F85}
 	EndGlobalSection
 EndGlobal
