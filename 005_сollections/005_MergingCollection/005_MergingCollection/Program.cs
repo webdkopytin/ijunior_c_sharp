@@ -9,8 +9,8 @@ namespace _005_MergingCollection
         {
             List<string> listResult = new List<string>();
 
-            string[] firstArray = new string[] { "1", "2", "3", "4", "5", "6" };
-            string[] secondArray = new string[] { "4", "5", "6", "7" };
+            string[] firstArray = new string[] { "1", "2", "1" };
+            string[] secondArray = new string[] { "3", "2" };
 
             foreach (string record in firstArray)
                 listResult.Add(record);
