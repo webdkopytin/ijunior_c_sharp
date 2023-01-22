@@ -10,7 +10,7 @@ namespace _004_BraveNewWorld
             Console.CursorVisible = false;
 
             bool isPlaing = true;
-            bool wallDefinition = true;
+            bool isWall = true;
 
             int snakePositionX;
             int snakePositionY;
@@ -32,16 +32,16 @@ namespace _004_BraveNewWorld
                 {
                     SetDirection(ref snakeDirectionX, ref snakeDirectionY);
 
-                    wallDefinition = map[snakePositionX + snakeDirectionX, snakePositionY + snakeDirectionY] != wallSymbol;
+                    isWall = map[snakePositionX + snakeDirectionX, snakePositionY + snakeDirectionY] != wallSymbol;
 
-                    DrawMovement(wallDefinition, ref snakePositionX, ref snakePositionY, snakeDirectionX, snakeDirectionY, wallSymbol, snakeSymbol);
+                    DrawMovement(isWall, ref snakePositionX, ref snakePositionY, snakeDirectionX, snakeDirectionY, wallSymbol, snakeSymbol);
                 }
             }
         }
 
-        static void DrawMovement(bool wallDefinition, ref int snakePositionX, ref int snakePositionY, int snakeDirectionX, int snakeDirectionY, char wallSymbol, char snakeSymbol)
+        static void DrawMovement(bool isWall, ref int snakePositionX, ref int snakePositionY, int snakeDirectionX, int snakeDirectionY, char wallSymbol, char snakeSymbol)
         {
-            if (wallDefinition)
+            if (isWall)
             {
                 Console.SetCursorPosition(snakePositionY, snakePositionX);
                 Console.WriteLine(" ");
