@@ -17,9 +17,7 @@ namespace _005_MergingCollection
 
             for (int i = 0; i < secondArray.Length; i++)
             {
-                if (listResult.Contains(secondArray[i]))
-                    continue;
-                else
+                if (!listResult.Contains(secondArray[i]))
                     listResult.Add(secondArray[i]);
             }
 
