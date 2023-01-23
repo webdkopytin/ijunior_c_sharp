@@ -65,7 +65,7 @@
 
 ✅ [READINT](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/004_functions/003_ReadIint/003_ReadIint/Program.cs)
 
-✅ [Brave new world](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/004_functions/004_BraveNewWorld/004_BraveNewWorld/Program.cs)
+🟡 [Brave new world](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/004_functions/004_BraveNewWorld/004_BraveNewWorld/Program.cs)
 
 ✅ [КАНЗАС СИТИ ШАФЛ](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/004_functions/005_KansasCityShuffle/005_KansasCityShuffle/Program.cs)
 
@@ -75,7 +75,7 @@
 
 ✅ [Очередь в магазине](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/005_сollections/002_QueueStore/002_QueueStore/Program.cs)
 
-🟡 [Динамический массив продвинутый](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/005_сollections/003_DynamicArrayPro/003_DynamicArrayPro/Program.cs)
+✅ [Динамический массив продвинутый](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/005_сollections/003_DynamicArrayPro/003_DynamicArrayPro/Program.cs)
 
 🟡 [Кадровый учет продвинутый](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/005_сollections/004_PersonnelAccountingPro/004_PersonnelAccountingPro/Program.cs)
 
