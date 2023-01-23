@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace _005_MergingCollection
 {
@@ -12,19 +14,25 @@ namespace _005_MergingCollection
             string[] firstArray = new string[] { "1", "2", "1" };
             string[] secondArray = new string[] { "3", "2" };
 
-            foreach (string record in firstArray)
-                listResult.Add(record);
-
-            for (int i = 0; i < secondArray.Length; i++)
-            {
-                if (!listResult.Contains(secondArray[i]))
-                    listResult.Add(secondArray[i]);
-            }
+            CheckRepetitions(firstArray, listResult);
+            CheckRepetitions(secondArray, listResult);
 
             foreach (string resultStringArray in listResult)
                 Console.Write(resultStringArray.ToString() + " ");
 
             Console.ReadKey();
+        }
+
+        static void CheckRepetitions(string[] curentArray, List<string> listResult)
+        {
+            for (int i = 0; i < curentArray.Length; i++)
+            {
+                for (int j = 0; j < curentArray.Length; j++)
+                {
+                    if (i != j && !listResult.Contains(curentArray[i]))
+                        listResult.Add(curentArray[i]);
+                }
+            }
         }
     }
 }
