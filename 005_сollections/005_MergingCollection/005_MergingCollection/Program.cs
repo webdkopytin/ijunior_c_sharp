@@ -14,8 +14,8 @@ namespace _005_MergingCollection
             string[] firstArray = new string[] { "1", "2", "1" };
             string[] secondArray = new string[] { "3", "2" };
 
-            CheckRepetitions(firstArray, listResult);
-            CheckRepetitions(secondArray, listResult);
+            GetRepetitions(firstArray, listResult);
+            GetRepetitions(secondArray, listResult);
 
             foreach (string resultStringArray in listResult)
                 Console.Write(resultStringArray.ToString() + " ");
@@ -23,15 +23,12 @@ namespace _005_MergingCollection
             Console.ReadKey();
         }
 
-        static void CheckRepetitions(string[] curentArray, List<string> listResult)
+        static void GetRepetitions(string[] curentArray, List<string> listResult)
         {
             for (int i = 0; i < curentArray.Length; i++)
             {
-                for (int j = 0; j < curentArray.Length; j++)
-                {
-                    if (i != j && !listResult.Contains(curentArray[i]))
-                        listResult.Add(curentArray[i]);
-                }
+                if (listResult.Contains(curentArray[i]) == false)
+                    listResult.Add(curentArray[i]);
             }
         }
     }
