@@ -34,26 +34,23 @@ namespace _004_PersonnelAccountingPro
                 Console.Write("Введите команду: ");
                 inputCommand = Console.ReadLine();
 
-                if (isOpen)
+                switch (inputCommand)
                 {
-                    switch (inputCommand)
-                    {
-                        case CommandAddRecord:
-                            AddRecord(dossierArchive);
-                            break;
+                    case CommandAddRecord:
+                        AddRecord(dossierArchive);
+                        break;
 
-                        case CommandViewAllRecords:
-                            ViewAllRecords(dossierArchive);
-                            break;
+                    case CommandViewAllRecords:
+                        ViewAllRecords(dossierArchive);
+                        break;
 
-                        case CommandDeleteRecord:
-                            DeleteRecord(dossierArchive);
-                            break;
+                    case CommandDeleteRecord:
+                        DeleteRecord(dossierArchive);
+                        break;
 
-                        case CommandExit:
-                            isOpen = false;
-                            break;
-                    }
+                    case CommandExit:
+                        isOpen = false;
+                        break;
                 }
             }
         }
