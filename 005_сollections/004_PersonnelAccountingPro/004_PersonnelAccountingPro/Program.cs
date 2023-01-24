@@ -7,27 +7,23 @@ namespace _004_PersonnelAccountingPro
     {
         static void Main(string[] args)
         {
-            const int CommandAddRecord = 1;
-            const int CommandViewAllRecords = 2;
-            const int CommandDeleteRecord = 3;
-            const int CommandExit = 4;
+            const string CommandAddRecord = "1";
+            const string CommandViewAllRecords = "2";
+            const string CommandDeleteRecord = "3";
+            const string CommandExit = "4";
 
             bool isOpen = true;
-            bool isCommand;
 
-            int parseCommand;
-
-            string inputFirstLastName = "";
-            string inputPosition = "";
             string inputCommand;
 
             Dictionary<string, string> dossierArchive = new Dictionary<string, string>();
 
+            Console.SetCursorPosition(0, 0);
+
             while (isOpen)
             {
                 Console.Clear();
-                Console.SetCursorPosition(0, 0);
-
+                
                 Console.WriteLine(
                         $"{CommandAddRecord} - добавить досье\n" +
                         $"{CommandViewAllRecords} - вывести все досье\n" +
@@ -38,14 +34,12 @@ namespace _004_PersonnelAccountingPro
                 Console.Write("Введите команду: ");
                 inputCommand = Console.ReadLine();
 
-                isCommand = int.TryParse(inputCommand, out parseCommand);
-
-                if (isCommand && isOpen)
+                if (isOpen)
                 {
-                    switch (parseCommand)
+                    switch (inputCommand)
                     {
                         case CommandAddRecord:
-                            AddRecord(inputFirstLastName, inputPosition, dossierArchive);
+                            AddRecord(dossierArchive);
                             break;
 
                         case CommandViewAllRecords:
@@ -64,26 +58,31 @@ namespace _004_PersonnelAccountingPro
             }
         }
 
-        static void AddRecord(string inputFirstLastName, string inputPosition, Dictionary<string, string> dossierArchive)
+        static void AddRecord(Dictionary<string, string> dossierArchive)
         {
             Console.Write("Введите ФИО: ");
-            inputFirstLastName = Console.ReadLine();
+            string inputFirstLastName = Console.ReadLine();
 
             Console.Write("Введите должность: ");
-            inputPosition = Console.ReadLine();
+            string inputPosition = Console.ReadLine();
 
-            dossierArchive.Add(inputFirstLastName, inputPosition);
-
-            Console.WriteLine($"\n\nЗапись добавлена.\nДля продолжения нажмите любую кнопку...");
+            if (dossierArchive.ContainsKey(inputFirstLastName) == false)
+            {
+                dossierArchive.Add(inputFirstLastName, inputPosition);
+                Console.WriteLine($"\n\nЗапись добавлена.\nДля продолжения нажмите любую кнопку...");
+            }    
+            else
+            {
+                Console.WriteLine("Такая запись уже существует.");
+            }
+            
             Console.ReadKey();
         }
 
         static void ViewAllRecords(Dictionary<string, string> dossierArchive)
         {
             foreach (var record in dossierArchive)
-            {
                 Console.Write("\n" + record.Key + " - " + record.Value);
-            }
 
             Console.WriteLine($"\n\nВыведены все записи.\nДля продолжения нажмите любую кнопку...");
             Console.ReadKey();
@@ -94,16 +93,10 @@ namespace _004_PersonnelAccountingPro
             Console.Write("Введите ФИО человека, которого необходимо удалить из досье: ");
             string deleteFirstLastName = Console.ReadLine();
 
-            if (dossierArchive.ContainsKey(deleteFirstLastName))
-            {
-                dossierArchive.Remove(deleteFirstLastName);
-
+            if (dossierArchive.Remove(deleteFirstLastName))
                 Console.WriteLine($"\n\nЗапись удалена.\nДля продолжения нажмите любую кнопку...");
-            }
             else
-            {
                 Console.WriteLine("Не найдено!");
-            }
 
             Console.ReadKey();
         }
