@@ -23,7 +23,7 @@ namespace _004_PersonnelAccountingPro
             while (isOpen)
             {
                 Console.Clear();
-                
+
                 Console.WriteLine(
                         $"{CommandAddRecord} - добавить досье\n" +
                         $"{CommandViewAllRecords} - вывести все досье\n" +
@@ -70,12 +70,12 @@ namespace _004_PersonnelAccountingPro
             {
                 dossierArchive.Add(inputFirstLastName, inputPosition);
                 Console.WriteLine($"\n\nЗапись добавлена.\nДля продолжения нажмите любую кнопку...");
-            }    
+            }
             else
             {
                 Console.WriteLine("Такая запись уже существует.");
             }
-            
+
             Console.ReadKey();
         }
 
