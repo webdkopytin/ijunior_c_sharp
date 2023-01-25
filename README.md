@@ -83,7 +83,7 @@
 
 ## ООП
 
-🔁 Работа с классами
+🟡 [Работа с классами](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/006_oop/001_Сlasses/001_Сlasses/Program.cs)
 
 🔁 Работа со свойствами
 
