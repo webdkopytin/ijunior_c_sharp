@@ -57,7 +57,7 @@
 
 ✅ [Сдвиг значений массива](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/003_arrays/008_ShiftingArrayValues/008_ShiftingArrayValues/Program.cs)
 
-## Функции
+## Функции - Done ✅
 
 ✅ [Кадровый учет](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/004_functions/001_PersonnelAccounting/001_PersonnelAccounting/Program.cs)
 
@@ -65,7 +65,7 @@
 
 ✅ [READINT](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/004_functions/003_ReadIint/003_ReadIint/Program.cs)
 
-🟡 [Brave new world](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/004_functions/004_BraveNewWorld/004_BraveNewWorld/Program.cs)
+✅ [Brave new world](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/004_functions/004_BraveNewWorld/004_BraveNewWorld/Program.cs)
 
 ✅ [КАНЗАС СИТИ ШАФЛ](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/004_functions/005_KansasCityShuffle/005_KansasCityShuffle/Program.cs)
 
