@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _001_Сlasses
 {
@@ -10,8 +6,30 @@ namespace _001_Сlasses
     {
         static void Main(string[] args)
         {
-            // Создать класс игрока, с полями, содержащими информацию об игроке и методом, который выводит информацию на экран.
-            // В классе обязательно должен быть конструктор
+            Player firstPlayer = new Player("Vitory", 100, 100);
+
+            firstPlayer.ShowInfo();
+
+            Console.ReadKey();
+        }
+
+        class Player
+        {
+            public string Name;
+            public int Health;
+            public int Mana;
+
+            public Player(string name, int health, int mana)
+            {
+                this.Name = name;
+                this.Health = health;
+                this.Mana = mana;
+            }
+
+            public void ShowInfo()
+            {
+                Console.WriteLine($"Имя игрока: {Name}\nКоличество жизней: {Health}\nКоличество маны: {Mana}");
+            }
         }
     }
 }
