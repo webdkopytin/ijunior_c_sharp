@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace _002_WorkingProperties
 {
@@ -6,33 +10,10 @@ namespace _002_WorkingProperties
     {
         static void Main(string[] args)
         {
-            Draw draw = new Draw();
-            Player player = new Player(5, 5);
+            // Создать класс игрока, у которого есть поля с его положением в x,y.
+            // Создать класс отрисовщик, с методом, который отрисует игрока.
 
-            draw.DrawPlayer(player.PositionX, player.PositionY);
-
-            Console.ReadKey();
-        }
-
-        class Player
-        {
-            public int PositionX { get; private set; }
-            public int PositionY { get; private set; }
-
-            public Player(int positionX, int positionY)
-            {
-                PositionX = positionX;
-                PositionY = positionY;
-            }
-        }
-
-        class Draw
-        {
-            public void DrawPlayer(int positionX, int positionY, char symbolUser = '@')
-            {
-                Console.SetCursorPosition(positionX, positionY);
-                Console.Write(symbolUser);
-            }
+            // Попрактиковаться в работе со свойствами.
         }
     }
 }
