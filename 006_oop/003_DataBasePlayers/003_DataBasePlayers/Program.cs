@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _003_DataBasePlayers
 {
@@ -10,11 +6,78 @@ namespace _003_DataBasePlayers
     {
         static void Main(string[] args)
         {
-            // Реализовать базу данных игроков и методы для работы с ней.
-            // У игрока может быть уникальный номер, ник, уровень, флаг – забанен ли он(флаг - bool).
-            // Реализовать возможность добавления игрока, бана игрока по уникальный номеру, разбана игрока по уникальный номеру и удаление игрока.
-            // Создание самой БД не требуется, задание выполняется инструментами, которые вы уже изучили в рамках курса.Но нужен класс, который
-            // содержит игроков и её можно назвать "База данных".
+            Player[] players = {
+                new Player(1, "FirstSkin", 10, false),
+                new Player(2, "Monkey", 14, false),
+                new Player(3, "UserMonk", 21, true)
+            };
+
+            BanPlayer(players, 1);
+            ShowAllPlayers(players);
+
+            UnBanPlayer(players, 2);
+            ShowAllPlayers(players);
+
+            Console.ReadKey();
+        }
+
+        static void ShowAllPlayers(Player[] players)
+        {
+            for (int i = 0; i < players.Length; i++)
+                players[i].ShowStats();
+
+            Console.WriteLine();
+        }
+
+        static void BanPlayer(Player[] players, int id)
+        {
+            players[id].BanPlayer();
+        }
+
+        static void UnBanPlayer(Player[] players, int id)
+        {
+            players[id].UnBanPlayer();
+        }
+
+        class Player
+        {
+            public Player(int id, string nikName, int level, bool flag)
+            {
+                Id = id;
+                NikName = nikName;
+                Level = level;
+                Flag = flag;
+            }
+
+            public int Id { get; private set; }
+            public string NikName { get; private set; }
+            public int Level { get; private set; }
+            public bool Flag { get; private set; }
+
+            public void AddPlayer()
+            {
+
+            }
+
+            public void DeletePlayer()
+            {
+
+            }
+
+            public void ShowStats()
+            {
+                Console.Write($"\n{Id}) ник: {NikName}, уровень: {Level}, забанен: {Flag}");
+            }
+
+            public void BanPlayer()
+            {
+                Flag = true;
+            }
+
+            public void UnBanPlayer()
+            {
+                Flag = false;
+            }
         }
     }
 }
