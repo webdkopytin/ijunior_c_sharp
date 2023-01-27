@@ -83,7 +83,7 @@
 
 ## ООП
 
-🟡 [Работа с классами](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/006_oop/001_Сlasses/001_Сlasses/Program.cs)
+✅ [Работа с классами](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/006_oop/001_Сlasses/001_Сlasses/Program.cs)
 
 🟡 [Работа со свойствами](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/006_oop/002_WorkingProperties/002_WorkingProperties/Program.cs)
 
