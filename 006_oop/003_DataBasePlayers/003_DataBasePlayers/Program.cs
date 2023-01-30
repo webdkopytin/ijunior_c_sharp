@@ -41,18 +41,18 @@ namespace _003_DataBasePlayers
 
         class Player
         {
-            public Player(int id, string nikName, int level, bool flag)
+            public Player(int id, string nikName, int level, bool isBanned)
             {
                 Id = id;
                 NikName = nikName;
                 Level = level;
-                Flag = flag;
+                IsBanned = isBanned;
             }
 
             public int Id { get; private set; }
             public string NikName { get; private set; }
             public int Level { get; private set; }
-            public bool Flag { get; private set; }
+            public bool IsBanned { get; private set; }
 
             public void AddPlayer()
             {
@@ -66,17 +66,17 @@ namespace _003_DataBasePlayers
 
             public void ShowStats()
             {
-                Console.Write($"\n{Id}) ник: {NikName}, уровень: {Level}, забанен: {Flag}");
+                Console.Write($"\n{Id}) ник: {NikName}, уровень: {Level}, забанен: {IsBanned}");
             }
 
             public void BanPlayer()
             {
-                Flag = true;
+                IsBanned = true;
             }
 
             public void UnBanPlayer()
             {
-                Flag = false;
+                IsBanned = false;
             }
         }
     }
