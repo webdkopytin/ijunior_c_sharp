@@ -10,8 +10,18 @@ namespace _003_DataBasePlayers
     {
         static void Main(string[] args)
         {
-            // Создание самой БД не требуется, задание выполняется инструментами, которые вы уже изучили в рамках курса. Но нужен класс, который
-            // содержит игроков и её можно назвать "База данных".
+            
+        }
+
+        class DataBasePlayers
+        {
+            /// <summary>
+            /// Добавляет игрока
+            /// </summary>
+            public void AddPlayer()
+            {
+
+            }
         }
 
         class Player
@@ -28,17 +38,9 @@ namespace _003_DataBasePlayers
             }
 
             /// <summary>
-            /// Добавляет игрока
-            /// </summary>
-            public void AddUser()
-            {
-
-            }
-
-            /// <summary>
             /// Банит игрока по уникальному номеру
             /// </summary>
-            public void SetBanUser ()
+            public void SetBanPlayer()
             {
 
             }
@@ -46,7 +48,7 @@ namespace _003_DataBasePlayers
             /// <summary>
             /// Снимает Бан с игрока по уникальному номеру
             /// </summary>
-            public void UnBanUser()
+            public void UnBanPlayer()
             {
 
             }
@@ -54,7 +56,7 @@ namespace _003_DataBasePlayers
             /// <summary>
             /// Удаляет игрока
             /// </summary>
-            public void DelUser()
+            public void DelPlayer()
             {
 
             }
