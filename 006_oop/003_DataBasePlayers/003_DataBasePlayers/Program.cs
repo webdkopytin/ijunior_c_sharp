@@ -22,6 +22,14 @@ namespace _003_DataBasePlayers
             {
 
             }
+
+            /// <summary>
+            /// Удаляет игрока
+            /// </summary>
+            public void DeletePlayer()
+            {
+
+            }
         }
 
         class Player
@@ -49,14 +57,6 @@ namespace _003_DataBasePlayers
             /// Снимает Бан с игрока по уникальному номеру
             /// </summary>
             public void UnBanPlayer()
-            {
-
-            }
-
-            /// <summary>
-            /// Удаляет игрока
-            /// </summary>
-            public void DelPlayer()
             {
 
             }
