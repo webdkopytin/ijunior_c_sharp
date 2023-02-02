@@ -22,7 +22,9 @@ namespace _003_DataBasePlayers
             {
                 string name;
                 string level;
+
                 int result;
+
                 bool isStringNumber;
 
                 Console.Write("Введите никнейм игрока: ");
@@ -32,13 +34,10 @@ namespace _003_DataBasePlayers
                 isStringNumber = CheckString(out level, out result);
 
                 if (isStringNumber)
-                {
                     _players.Add(new Player(name, result));
-                }
                 else
-                {
                     GetMessege("Введите корректные данные");
-                }
+
                 Console.Clear();
             }
 
@@ -53,10 +52,12 @@ namespace _003_DataBasePlayers
             {
                 userInput = " ";
                 result = 0;
+
                 bool isStringNumber;
 
                 userInput = Console.ReadLine();
                 isStringNumber = int.TryParse(userInput, out result);
+
                 return isStringNumber;
             }
 
@@ -76,7 +77,6 @@ namespace _003_DataBasePlayers
             private string _name;
             private int _level;
             private string _flag;
-            public bool IsBanned { get; private set; }
 
             public Player(string name, int level)
             {
@@ -84,6 +84,8 @@ namespace _003_DataBasePlayers
                 _level = level;
                 IsBanned = false;
             }
+
+            public bool IsBanned { get; private set; }
 
             public void SetBanPlayer()
             {
