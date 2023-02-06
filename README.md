@@ -89,7 +89,7 @@
 
 🟡 [База данных игроков](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/006_oop/003_DataBasePlayers/003_DataBasePlayers/Program.cs)
 
-🔁 Колода карт
+🟡 [Колода карт](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/006_oop/004_PackCards/004_PackCards/Program.cs)
 
 🔁 Хранилище книг
 
