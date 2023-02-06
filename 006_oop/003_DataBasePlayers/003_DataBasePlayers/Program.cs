@@ -63,16 +63,16 @@ namespace _003_DataBasePlayers
 
         class Player
         {
-            public string Name { get; private set; }
-            public int Level { get; private set; }
-            public bool IsBanned { get; private set; }
-
             public Player(string name, int level, bool isBanned)
             {
                 Name = name;
                 Level = level;
                 IsBanned = isBanned;
             }
+
+            public string Name { get; private set; }
+            public int Level { get; private set; }
+            public bool IsBanned { get; private set; }
 
             public void ShowInfo()
             {
