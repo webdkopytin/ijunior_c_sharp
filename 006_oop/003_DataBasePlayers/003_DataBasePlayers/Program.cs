@@ -147,22 +147,6 @@ namespace _003_DataBasePlayers
                 PrintGreenText("\nИгрок добавлен!\n");
             }
 
-            public void DeletePlayer()
-            {
-                Console.WriteLine("\nВведите уникальный номер игрока\n");
-                bool isNumber = int.TryParse(Console.ReadLine(), out int input);
-
-                if (isNumber & _players.ContainsKey(input))
-                {
-                    _players.Remove(input);
-                    PrintGreenText("\nИгрок удалён!\n");
-                }
-                else
-                {
-                    PrintRedText("\nНеккоректный ввод или игрока с данным номером нет в базе\n");
-                }
-            }
-
             public void ShowData()
             {
                 if (_players.Count != 0)
@@ -181,6 +165,22 @@ namespace _003_DataBasePlayers
                 else
                 {
                     PrintRedText("\nВ базе ещё нет игроков\n");
+                }
+            }
+
+            public void DeletePlayer()
+            {
+                Console.WriteLine("\nВведите уникальный номер игрока\n");
+                bool isNumber = int.TryParse(Console.ReadLine(), out int input);
+
+                if (isNumber & _players.ContainsKey(input))
+                {
+                    _players.Remove(input);
+                    PrintGreenText("\nИгрок удалён!\n");
+                }
+                else
+                {
+                    PrintRedText("\nНеккоректный ввод или игрока с данным номером нет в базе\n");
                 }
             }
 
@@ -230,14 +230,14 @@ namespace _003_DataBasePlayers
                 }
             }
 
-            public void PrintRedText(string text)
+            private void PrintRedText(string text)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(text);
                 Console.ResetColor();
             }
 
-            public void PrintGreenText(string text)
+            private void PrintGreenText(string text)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(text);
