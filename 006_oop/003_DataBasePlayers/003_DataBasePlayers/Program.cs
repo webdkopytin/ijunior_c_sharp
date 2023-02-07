@@ -11,7 +11,7 @@ namespace _003_DataBasePlayers
             const int menuAddPlayer = 2;
             const int menuDeletePlayer = 3;
             const int menuBanPlayer = 4;
-            const int menuUnBanPlayer = 5;
+            const int menuUnbanPlayer = 5;
             const int menuExit = 6;
 
             bool isWork = true;
@@ -25,7 +25,7 @@ namespace _003_DataBasePlayers
                     $"\n{menuAddPlayer}. Добавить нового игрока" +
                     $"\n{menuDeletePlayer}. Удалить игрока" +
                     $"\n{menuBanPlayer}. Забанить игрока" +
-                    $"\n{menuUnBanPlayer}. Разбанить игрока" +
+                    $"\n{menuUnbanPlayer}. Разбанить игрока" +
                     $"\n{menuExit}. Выход"
                     );
 
@@ -50,8 +50,8 @@ namespace _003_DataBasePlayers
                         database.BanPlayer();
                         break;
 
-                    case menuUnBanPlayer:
-                        database.UnBanPlayer();
+                    case menuUnbanPlayer:
+                        database.UnbanPlayer();
                         break;
 
                     case menuExit:
@@ -77,6 +77,7 @@ namespace _003_DataBasePlayers
             public void ShowInfo()
             {
                 Console.WriteLine($"Имя игрока: {Name} \nУровень игрока: {Level}");
+
                 if (IsBanned)
                     Console.WriteLine("Есть у игрока бан: да");
                 else
@@ -88,7 +89,7 @@ namespace _003_DataBasePlayers
                 IsBanned = true;
             }
 
-            public void UnBan()
+            public void Unban()
             {
                 IsBanned = false;
             }
@@ -206,7 +207,7 @@ namespace _003_DataBasePlayers
                 }
             }
 
-            public void UnBanPlayer()
+            public void UnbanPlayer()
             {
                 Console.WriteLine("\nВведите уникальный номер игрока\n");
                 int input = int.Parse(Console.ReadLine());
@@ -215,7 +216,7 @@ namespace _003_DataBasePlayers
                 {
                     if (_players[input].IsBanned)
                     {
-                        _players[input].UnBan();
+                        _players[input].Unban();
                         PrintGreenText("\nИгрок разабанен!\n");
                     }
                     else
