@@ -7,12 +7,12 @@ namespace _003_DataBasePlayers
     {
         static void Main(string[] args)
         {
-            const int menuShowData = 1;
-            const int menuAddPlayer = 2;
-            const int menuDeletePlayer = 3;
-            const int menuBanPlayer = 4;
-            const int menuUnbanPlayer = 5;
-            const int menuExit = 6;
+            const int MenuShowData = 1;
+            const int MenuAddPlayer = 2;
+            const int MenuDeletePlayer = 3;
+            const int MenuBanPlayer = 4;
+            const int MenuUnbanPlayer = 5;
+            const int MenuExit = 6;
 
             bool isWork = true;
 
@@ -21,12 +21,12 @@ namespace _003_DataBasePlayers
             while (isWork)
             {
                 Console.WriteLine(
-                    $"\n{menuShowData}. Вывести данные всех игроков" +
-                    $"\n{menuAddPlayer}. Добавить нового игрока" +
-                    $"\n{menuDeletePlayer}. Удалить игрока" +
-                    $"\n{menuBanPlayer}. Забанить игрока" +
-                    $"\n{menuUnbanPlayer}. Разбанить игрока" +
-                    $"\n{menuExit}. Выход"
+                    $"\n{MenuShowData}. Вывести данные всех игроков" +
+                    $"\n{MenuAddPlayer}. Добавить нового игрока" +
+                    $"\n{MenuDeletePlayer}. Удалить игрока" +
+                    $"\n{MenuBanPlayer}. Забанить игрока" +
+                    $"\n{MenuUnbanPlayer}. Разбанить игрока" +
+                    $"\n{MenuExit}. Выход"
                     );
 
                 Console.Write("\nВаш выбор: ");
@@ -34,27 +34,27 @@ namespace _003_DataBasePlayers
 
                 switch (input)
                 {
-                    case menuShowData:
+                    case MenuShowData:
                         database.ShowData();
                         break;
 
-                    case menuAddPlayer:
+                    case MenuAddPlayer:
                         database.AddPlayer();
                         break;
 
-                    case menuDeletePlayer:
+                    case MenuDeletePlayer:
                         database.DeletePlayer();
                         break;
 
-                    case menuBanPlayer:
+                    case MenuBanPlayer:
                         database.BanPlayer();
                         break;
 
-                    case menuUnbanPlayer:
+                    case MenuUnbanPlayer:
                         database.UnbanPlayer();
                         break;
 
-                    case menuExit:
+                    case MenuExit:
                         isWork = false;
                         break;
                 }
@@ -107,8 +107,8 @@ namespace _003_DataBasePlayers
 
             public void AddPlayer()
             {
-                const string answerYes = "Да";
-                const string answerNo = "Нет";
+                const string AnswerYes = "Да";
+                const string AnswerNo = "Нет";
                 
                 bool isBanned;
 
@@ -124,14 +124,14 @@ namespace _003_DataBasePlayers
                     return;
                 }
 
-                Console.WriteLine($"\nИгрок забанен? ({answerYes} или {answerNo}) \n");
+                Console.WriteLine($"\nИгрок забанен? ({AnswerYes} или {AnswerNo}) \n");
                 string input = Console.ReadLine();
 
-                if (input == answerYes)
+                if (input == AnswerYes)
                 {
                     isBanned = true;
                 }
-                else if (input == answerNo)
+                else if (input == AnswerNo)
                 {
                     isBanned = false;
                 }
