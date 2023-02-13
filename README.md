@@ -87,40 +87,4 @@
 
 ✅ [Работа со свойствами](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/006_oop/002_WorkingProperties/002_WorkingProperties/Program.cs)
 
-🟡 [База данных игроков](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/006_oop/003_DataBasePlayers/003_DataBasePlayers/Program.cs)
-
-🟡 [Колода карт](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/006_oop/004_PackCards/004_PackCards/Program.cs)
-
-🔁 Хранилище книг
-
-🔁 Магазин
-
-🔁 Конфигуратор пассажирских поездов
-
-🔁 Гладиаторские бои
-
-🔁 Супермаркет
-
-🔁 Война
-
-🔁 Аквариум
-
-🔁 Зоопарк
-
-🔁 Автосервис
-
-## LINQ
-
-🔁 Поиск преступника
-
-🔁 Амнистия
-
-🔁 Анархия в больнице
-
-🔁 Топ игроков сервера
-
-🔁 Определение просрочки
-
-🔁 Отчет о вооружении
-
-🔁 Объединение войск
+✅ [База данных игроков](https://github.com/webdkopytin/ijunior_c_sharp/blob/main/006_oop/003_DataBasePlayers/003_DataBasePlayers/Program.cs)
